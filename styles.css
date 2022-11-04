@@ -19,7 +19,7 @@ font-family: 'Roboto', sans-serif; */
     --button-cart-enabled: #B535F6B2;
     --white: #FFFFFF;
     --white-glass:#FFFFFF0F;
-
+    --card-background:linear-gradient(0deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05)), #121212;
     
 
 }
@@ -41,17 +41,29 @@ main {
     color: var(--white);
 }
 
+.game-info, .navigationBar, .htb-section, .store-section, .footer-section {
+    padding: 0 120px;
+    max-width: 1360px;
+    margin: 0 auto;
+}
 /* HEADER NAV BAR */
 
 .overlayMenu {
     display: none;
 }
 
+header {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+        background: linear-gradient(180deg, #121212 0%, rgba(18, 18, 18, 0) 100%);
+
+}
+
 .navigationBar{
     display: flex;
     justify-content: space-between;
     align-content: center;
-    background: linear-gradient(180deg, #121212 0%, rgba(18, 18, 18, 0) 100%);
     height: 96px;
     width: 100%;
 
@@ -106,8 +118,8 @@ main {
 
 .hero-section{
     width: 100%;
+    height: 100vh;
     
-    padding-top: 96px;
 }
 
 /* video carrusel */
@@ -126,8 +138,7 @@ video {
 /* carrusel */
 .carrouselinfo-container {
     width: 100%;
-    position: relative;
-    z-index: 10;
+    
 
     display: flex;
     justify-content: space-between;
@@ -135,35 +146,48 @@ video {
 
     gap: 42px;
 
-    height: calc(100vh - 96px);
+    height: 100%;
 
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
+    
+
+    /* Prevent select */
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+    
 }
 
+/* Button slider next y previous */
 .button-slider-container {
     height: 100%;
     width: 10vw;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    z-index: 4;
 }
 
 .button-slider-container:hover {
     cursor: pointer;
-    background: linear-gradient(90deg, rgba(226, 169, 255, 0.2) 11.43%, rgba(209, 117, 255, 0) 73.5%);
+}
+#previousVideo:hover {
+    background: linear-gradient(90deg, rgba(226, 169, 255, 0.25) 2.34%, rgba(215, 135, 255, 0.0877604) 66.63%, rgba(209, 117, 255, 0) 92.05%);}
+
+#nextVideo:hover {
+        background: linear-gradient(270deg, rgba(226, 169, 255, 0.25) 2.34%, rgba(215, 135, 255, 0.0877604) 66.63%, rgba(209, 117, 255, 0) 92.05%);
 }
 
-
-
-/* iconos fuera */
 .button-slider-container img {
     width: 32px;
     height: 32px;
 }
 
+/* Contenedor de la ficha de texto */
 .game-info{
     display: flex;
     justify-content: space-between;
@@ -171,8 +195,14 @@ video {
     gap: 100px;
  
     width: 100%;
+
+    position: relative;
+    z-index: 10;
+    height: 70%;
+    padding: 0 60px;
 }
 
+/* descripcion de logo */
 .logoAndDescription{
     display: flex;
     flex-direction: column;
@@ -232,11 +262,6 @@ video {
     padding: 0px 16px;
 }
 
-
-footer {
-    color: white;
-}
-
 /* Bottom overlay */
 .hero-section::after {
     content: "";
@@ -262,3 +287,223 @@ footer {
 
     background: linear-gradient(69.18deg, rgba(0, 0, 0, 0.6) 6.2%, rgba(0, 0, 0, 0) 81.28%);
 }
+
+/* HOW TO BUY A GAME */
+.htb-section {
+   display: flex;
+   flex-direction: column; 
+   gap: 24px;
+}
+
+.htb-section h2{
+    font-family: 'Maven Pro', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 24px;
+}
+
+.steps-container {
+    display: flex;
+    gap: 24px;
+    justify-content: space-between;
+
+}
+.step-container{
+    background-color: #1E1E1E;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.14), 0px 1px 18px rgba(0, 0, 0, 0.12), 0px 3px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 16px;
+
+    flex: 0 1 350px;
+    padding: 24px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    gap: 24px;
+
+    transition: background-color .3s ease-in;
+
+}
+
+.step-title {
+    display: flex;
+    align-items: center;
+    font-family: 'Exo 2';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 24px;
+
+    height: 40px;
+    gap: 16px
+}
+
+.step-container p{
+    font-family: 'Exo 2';
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: 0.15000000596046448px;
+    text-align: center;
+}
+
+.step-container:hover {
+    background-color:#333333;    
+    box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.14), 0px 6px 30px rgba(0, 0, 0, 0.12), 0px 8px 10px rgba(0, 0, 0, 0.2);
+    transition: background-color .3s ease-in;
+}
+
+/* STORE SECTION */
+.store-section h1{
+    font-family: 'Maven Pro', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 24px;
+}
+.store-section {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+.filter-container {
+    display: flex;
+    gap: 16px;
+}
+
+.filter {
+    background-color: #26202E;    
+    border-radius: 7px;
+    padding: 16px;
+    font-family: 'Maven Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+
+    border: 1px solid #26202E;
+
+}
+
+.filter-container p:hover {
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.14), 0px 1px 18px rgba(0, 0, 0, 0.12), 0px 3px 5px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.filter-container p:active, .active {
+    border: none;
+    border: 1px solid #BB86FC
+}
+
+.cardsGame-container {
+    display: flex;
+    gap: 24px;
+}
+
+.cardGame {
+    background-image: url(assets/gta.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 16px;
+    
+    flex: 0 1 330px;
+    height: 390px;
+
+    display: flex;
+    align-items: flex-end;
+}
+
+.cardGameInfo h4{
+    font-family: 'Exo 2';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 24px;
+
+}
+
+.cardGameInfo {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(7.5px);
+
+    border-radius: 65px 65px 0px 0px;
+
+    width: 100%;
+    height: 200px;
+        
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    gap: 12px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+
+    transition: height 10s ease-in-out;
+}
+
+
+.genres {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.genres p{
+    border: 1.5px solid rgba(255, 255, 255, 0.75);
+    border-radius: 50px;
+    width: fit-content;
+    padding: 0px 16px;
+}
+
+.rating-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+}
+
+.rating-price p {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+.recommendedSystem{
+    display:none;
+    height: 0px;
+    transition: height 5s ease-in-out;
+
+}
+.cardGameInfo button{
+    width: 100%;
+}
+ 
+/*Carta con hover*/
+.cardGameInfo:hover > .recommendedSystem {
+    width: 100%;
+    height: 150px;
+    display: block;
+    transition: height 5s ease-in-out;
+}
+
+.cardGameInfo:hover {
+    height: auto;
+    transition: all 10s ease-in-out;
+}
+
+
+/* FOOTER */
+footer {
+    color: white;
+}
+

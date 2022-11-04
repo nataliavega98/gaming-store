@@ -116,6 +116,7 @@ videoPlayer.onended = () => {
     console.log("entre trolo")
 };
 
+//Cambiar datos al apretar el boton next
 nextVideoButton.addEventListener("click", () => {
   changeVideo("next");
   video.src = bannerGames[reproducingVideo].source;
@@ -126,6 +127,7 @@ nextVideoButton.addEventListener("click", () => {
   videoPlayer.play();
 });
 
+//Cambiar datos al apretar el boton previous
 previousVideoButton.addEventListener("click", () => {
   changeVideo("previous");
   video.src = bannerGames[reproducingVideo].source;

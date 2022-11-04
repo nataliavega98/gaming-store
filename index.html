@@ -30,7 +30,7 @@
     <main>
 
     <!-- HERO SECTION -->
-        <section class="hero-section">
+        <section class="hero-section" id="hero-section">
             <!-- CARROUSEL -->
             <article class="carrouselinfo-container" id="carousel">
                 <div class="button-slider-container" id="previousVideo">
@@ -55,35 +55,92 @@
             <video autoplay muted="muted" id="videoPlayer">
                 <source src="" type="video/mp4" id="video"/>
             </video>
-            <!-- <video src="assets/Hogwarts-legacy.mp4" autoplay muted></video>
-
-            <div class="back-btn"></div>
-                <article class="game-info">
-                    <div>
-                        <img src="assets/hogwartsLogo.svg" alt="">
-                        <p>Hogwarts Legacy is an immersive, open-world action RPG. 
-                            Now you can take control of the action and be at the center of your own adventure in the wizarding world.
-                        </p>
-                        <button class="add-btn">add to cart</button>
-                    </div>
-                    <div>
-                        <p>Action</p>
-                        <p>RPG</p>
-                        <p>Adventure</p>
-                    </div>
-                </article>
-            <div class="next-btn"></div> -->
         </section>
-        <section>
+        <section class="htb-section" id="htb-section">
             <h2>HOW TO BUY</h2>
+            <article class="steps-container">
+                <!-- PASO 1 -->
+                <div class="step-container">
+                    <div class="step-title">
+                        <h3>1</h3>
+                        <img src="assets/gamer1.png" alt="">
+                    </div>
+                    <p>Go to the store section and 
+                        select a category or see all the games we have.</p>
+                </div>
+                <!-- PASO 2 -->
+                <div class="step-container">
+                    <div class="step-title">
+                        <h3>2</h3>
+                        <img src="assets/gamer2.png" alt="">
+                    </div>
+                    <p>When you have chosen a game, add to the cart.</p>
+                </div>
+                <!-- PASO 3 -->
+                <div class="step-container">
+                    <div class="step-title">
+                        <h3>3</h3>
+                        <img src="assets/gamer3.png" alt="">
+                    </div>
+                    <p>Manage your selected games in the cart and complete your purchase,</p>
+                </div>
+            </article>
         </section>
-        <section>
+        <section class="store-section">
             <h1>STORE</h1>
+            <article class="filter-container">
+                <p class="filter active">All games</p>
+                <p class="filter">Best rated</p>
+                <p class="filter">Adventure</p>
+                <p class="filter">Action</p>
+                <p class="filter">Indie</p>
+                <p class="filter">RPG</p>
+                <p class="filter">Shooter</p>
+                <p class="filter">Simulation</p>
+                <p class="filter">Sports</p>
+            </article>
+            <article class="cardsGame-container">
+                <div class="cardGame">
+                    <div class="cardGameInfo onHover">
+                        <h4>Grand Theft Auto</h4>
+                        <div class="genres">
+                            <p>Action</p>
+                            <p>Adventure</p>
+                        </div>
+                        <div class="rating-price">
+                            <p><img src="assets/starIcon.png" alt=""><b>Rating:</b>4.8</p>
+                            <p><img src="assets/priceIcon.png" alt=""><b>Price</b>10</p>
+                        </div>
+                        <div class="recommendedSystem">
+                            <p>Recommended: OS: Windows 10 64 Bit, Windows 8.1 64 Bit, Windows 8 64 Bit, Windows 7 64 Bit Service Pack 1Processor: Intel Core i5 3470 @ 3.2GHz (4 CPUs) / AMD X8 FX-8350 @ 4GHz (8 CPUs)Memory: 8 GB RAMGraphics: NVIDIA GTX 660 2GB 
+                                / AMD HD 7870 2GBStorage: 72 GB available spaceSound Card: 100% DirectX 10 compatible</p>
+                        </div>
+                        <button class="add-btn">Add to cart</button>
+                    </div>
+                </div>
+                <div class="cardGame">
+                    <div class="cardGameInfo onHover">
+                        <h4>Grand Theft Auto</h4>
+                        <div class="genres">
+                            <p>Action</p>
+                            <p>Adventure</p>
+                        </div>
+                        <div class="rating-price">
+                            <p><img src="assets/starIcon.png" alt=""><b>Rating:</b>4.8</p>
+                            <p><img src="assets/priceIcon.png" alt=""><b>Price</b>10</p>
+                        </div>
+                        <div class="recommendedSystem">
+                            <p>Revailable spaceSound Card: 100% DirectX 10 compatible</p>
+                        </div>
+                        <button class="add-btn">Add to cart</button>
+                    </div>
+                </div>
+            </article>
         </section>
     </main>
 
 
-    <footer><p>Hola soy footer</p></footer>
+    <footer class="footer-section"><p>Hola soy footer</p></footer>
     <script src="dataBanner.js"></script>
 </body>
 </html>
