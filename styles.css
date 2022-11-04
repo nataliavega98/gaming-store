@@ -1,0 +1,264 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Maven+Pro:wght@400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+/* font-family: 'Exo 2', sans-serif;
+font-family: 'Maven Pro', sans-serif;
+font-family: 'Roboto', sans-serif; */
+
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+:root {
+    --background:#121212;
+    --button-cart-active: #B535F6;
+    --button-cart-enabled: #B535F6B2;
+    --white: #FFFFFF;
+    --white-glass:#FFFFFF0F;
+
+    
+
+}
+
+
+html,body {
+    background-color: var(--background);
+}
+
+main {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: center;
+    gap: 24px;
+    /* max-width: 1360px;
+    margin: 0 auto; */
+    color: var(--white);
+}
+
+/* HEADER NAV BAR */
+
+.overlayMenu {
+    display: none;
+}
+
+.navigationBar{
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    background: linear-gradient(180deg, #121212 0%, rgba(18, 18, 18, 0) 100%);
+    height: 96px;
+    width: 100%;
+
+    gap: 32px;
+
+    padding: 4px 72px ;
+
+    position: fixed;
+    z-index: 5;
+}
+
+.menuoption-list {
+    display: flex;
+    gap: 36px;
+    align-items: flex-start;
+    align-items: center;
+}
+.menuoption-list, .menuoption-list a{
+    color: var(--white);
+    font-family: 'Maven Pro', sans-serif;
+    cursor: pointer;
+    
+}
+
+.option:hover{
+    text-decoration: underline 1px white;
+    text-underline-offset: 5px;
+    
+}
+.gaming-logo {
+    background-image: url(assets/gamingstore-logo.svg);
+    object-fit: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    width: 250px;
+    height: 96px;
+}
+
+.iconOption {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.iconOption img {
+    height: 22px;
+}
+
+/* HERO SECTION */
+
+
+.hero-section{
+    width: 100%;
+    
+    padding-top: 96px;
+}
+
+/* video carrusel */
+video {
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    object-position: center;
+}
+
+
+/* carrusel */
+.carrouselinfo-container {
+    width: 100%;
+    position: relative;
+    z-index: 10;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 42px;
+
+    height: calc(100vh - 96px);
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.button-slider-container {
+    height: 100%;
+    width: 10vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-slider-container:hover {
+    cursor: pointer;
+    background: linear-gradient(90deg, rgba(226, 169, 255, 0.2) 11.43%, rgba(209, 117, 255, 0) 73.5%);
+}
+
+
+
+/* iconos fuera */
+.button-slider-container img {
+    width: 32px;
+    height: 32px;
+}
+
+.game-info{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 100px;
+ 
+    width: 100%;
+}
+
+.logoAndDescription{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 38px;
+
+    width: 40%;
+}
+
+.logoAndDescription img {
+    width: 300px;
+    height: 120px;
+    object-fit: contain;
+}
+.logoAndDescription button {
+    width: 50%;
+    height: 40px;
+}
+
+/* boton añadir */
+.add-btn {
+    background: rgba(181, 53, 246, 0.5);
+    backdrop-filter: blur(5.5px);
+    border: none;
+    outline: none;
+    border-radius: 4px;
+    height: 40px;
+    padding: 8px 42px;
+
+    text-align: center;
+    letter-spacing: 0.15px;
+    font-variant: small-caps;
+
+    color: #FFFFFF;
+    transition: background .5s ease;
+
+}
+.add-btn:hover {
+    cursor: pointer;
+    background: #B535F6;
+    transition: background .5s ease;
+}
+
+/* Chips de Generos */
+#genres {
+    display: flex;
+    gap: 16px;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#genres p{
+    border: 1.5px solid rgba(255, 255, 255, 0.75);
+    border-radius: 50px;
+    width: fit-content;
+    padding: 0px 16px;
+}
+
+
+footer {
+    color: white;
+}
+
+/* Bottom overlay */
+.hero-section::after {
+    content: "";
+    width: 100%;
+    position: absolute;
+    height: 40%;
+    bottom: 0;
+    left: 0;
+    z-index: 4;
+    /* background-color: red; */
+    background: linear-gradient(360deg, #121212 15.42%, rgba(18, 18, 18, 0.663542) 37.29%, rgba(18, 18, 18, 0) 100%);
+}
+
+/* side overlay */
+.hero-section::before {
+    content: "";
+    width: 60%;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 4;
+
+    background: linear-gradient(69.18deg, rgba(0, 0, 0, 0.6) 6.2%, rgba(0, 0, 0, 0) 81.28%);
+}

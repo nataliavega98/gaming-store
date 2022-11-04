@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="assets/logoPage.png">
+    <link rel="stylesheet" href="styles.css">
+    
+    <title>Gaming Store</title>
+</head>
+<body>
+<!-- HEADER -->
+    <header>
+        <nav class="navigationBar">
+            <ul class="menuoption-list">
+                <li class="option"><a href="">Home</a></li>
+                <li class="option"><a href="">How to buy</a></li>
+                <li class="option"><a href="">Store</a></li>
+            </ul>
+            <div class="gaming-logo"></div>
+            <ul class="menuoption-list">
+                <li class="option iconOption"><img src="assets/cartIcon.png" alt="Cart logo, Shop">Cart</li>
+                <li class="option iconOption"><img src="assets/userIcon.png" alt="User logo, Login">Login</li>
+                <div class="overlayMenu" href="" ></div>
+            </ul>
+        </nav>
+    </header>
+    <main>
+
+    <!-- HERO SECTION -->
+        <section class="hero-section">
+            <!-- CARROUSEL -->
+            <article class="carrouselinfo-container" id="carousel">
+                <div class="button-slider-container" id="previousVideo">
+                    <img src="assets/bannerHeroAssets/back-arrow.png" alt="">
+                </div>
+
+                    <!-- FICHA-GAME -->
+                    <div class="game-info">
+                        
+                        <div class="logoAndDescription">
+                            <img src="" id="gameLogo" alt="">
+                            <p id="game-banner-description"></p>
+                            <button class="add-btn">add to cart</button>
+                        </div>
+                        <div id="genres"></div>
+                    </div>
+                <div class="button-slider-container" id="nextVideo">
+                    <img src="assets/bannerHeroAssets/next-arrow.png" alt="">
+                </div>
+            </article>
+            <!-- VIDEO DINAMICO CARRUSEL -->
+            <video autoplay muted="muted" id="videoPlayer">
+                <source src="" type="video/mp4" id="video"/>
+            </video>
+            <!-- <video src="assets/Hogwarts-legacy.mp4" autoplay muted></video>
+
+            <div class="back-btn"></div>
+                <article class="game-info">
+                    <div>
+                        <img src="assets/hogwartsLogo.svg" alt="">
+                        <p>Hogwarts Legacy is an immersive, open-world action RPG. 
+                            Now you can take control of the action and be at the center of your own adventure in the wizarding world.
+                        </p>
+                        <button class="add-btn">add to cart</button>
+                    </div>
+                    <div>
+                        <p>Action</p>
+                        <p>RPG</p>
+                        <p>Adventure</p>
+                    </div>
+                </article>
+            <div class="next-btn"></div> -->
+        </section>
+        <section>
+            <h2>HOW TO BUY</h2>
+        </section>
+        <section>
+            <h1>STORE</h1>
+        </section>
+    </main>
+
+
+    <footer><p>Hola soy footer</p></footer>
+    <script src="dataBanner.js"></script>
+</body>
+</html>
