@@ -113,7 +113,6 @@ videoPlayer.onended = () => {
     videoPlayer.load();
     videoPlayer.play();
 
-    console.log("entre trolo")
 };
 
 //Cambiar datos al apretar el boton next
@@ -137,3 +136,4 @@ previousVideoButton.addEventListener("click", () => {
   videoPlayer.load();
   videoPlayer.play();
 });
+

@@ -5,27 +5,67 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Logo de la pestaña -->
     <link rel="icon" href="assets/logoPage.png">
+
+    <!-- Hojas de estilo en cascada -->
     <link rel="stylesheet" href="styles.css">
-    
+    <link rel="stylesheet" href="mediaqueries.css">
+
+    <!-- iconos de FontAwesome -->
+    <script src="https://kit.fontawesome.com/69ab8990bd.js" crossorigin="anonymous"></script>
+
     <title>Gaming Store</title>
+    
 </head>
 <body>
 <!-- HEADER -->
-    <header>
+    <header class="nav-fixed"">
+        <div class="overlayMenu" href="" ></div>
         <nav class="navigationBar">
             <ul class="menuoption-list">
-                <li class="option"><a href="">Home</a></li>
-                <li class="option"><a href="">How to buy</a></li>
-                <li class="option"><a href="">Store</a></li>
+                <li class="option"><a href="#hero-section">Home</a></li>
+                <li class="option"><a href="#htb-section">How to buy</a></li>
+                <li class="option"><a href="#store-section">Store</a></li>
             </ul>
-            <div class="gaming-logo"></div>
+            <a href="#hero-section" class="gaming-logo"><img src="assets/gamingstore-logo.svg" alt=""></a>
             <ul class="menuoption-list">
-                <li class="option iconOption"><img src="assets/cartIcon.png" alt="Cart logo, Shop">Cart</li>
+                <li class="option iconOption cartButton"><img src="assets/cartIcon.png" alt="Cart logo, Shop">Cart</li>
                 <li class="option iconOption"><img src="assets/userIcon.png" alt="User logo, Login">Login</li>
-                <div class="overlayMenu" href="" ></div>
-            </ul>
-        </nav>
+            </nav>
+        </ul>
+        <div class="cart">
+            
+            <i class="fa-solid fa-xmark close-cart"></i>
+            
+            <div class="cart-container">
+                <h2>Shopping Cart</h2>
+                <!-- card producto -->
+                <div class="products-container">
+                    <div class="product-info-container">
+                        <img src="assets/gta.png" alt="">
+                        <div class="product-info">
+                            <h6>Grand Theft Auto</h6>
+                            <p><b>Price:</b> $20</p>
+                        </div>
+                    </div>
+                    <div class="product-quantity-container">
+                        <p>Quantity</p>
+                        <div class="product-quantity">
+                            <i class="fa-solid fa-plus addplus-product"></i>
+                            <p class="quantity">1</p>
+                            <i class="fa-solid fa-minus substract-product"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- total price -->
+                <div class="total-product-container">
+                    <p><b>Total:</b> $20</p>
+                    <button class="buy-btn">buy</button>
+                    <button class="empty-btn">empty cart</button>
+                </div>
+            </div>
+        </div>
     </header>
     <main>
 
@@ -38,24 +78,30 @@
                 </div>
 
                     <!-- FICHA-GAME -->
-                    <div class="game-info">
+                    <div class="game-info" id="game-info">
                         
                         <div class="logoAndDescription">
                             <img src="" id="gameLogo" alt="">
                             <p id="game-banner-description"></p>
                             <button class="add-btn">add to cart</button>
                         </div>
-                        <div id="genres"></div>
+                        <div class="genresAndVolume">
+                            <i class="fa-solid fa-volume-xmark volume"></i>
+                            <div id="genres"></div>
+                        </div>
+                        
                     </div>
                 <div class="button-slider-container" id="nextVideo">
                     <img src="assets/bannerHeroAssets/next-arrow.png" alt="">
                 </div>
             </article>
             <!-- VIDEO DINAMICO CARRUSEL -->
-            <video autoplay muted="muted" id="videoPlayer">
+            <video class="video" autoplay id="videoPlayer">
                 <source src="" type="video/mp4" id="video"/>
             </video>
         </section>
+
+    <!-- HOW TO BUY SECTION -->
         <section class="htb-section" id="htb-section">
             <h2>HOW TO BUY</h2>
             <article class="steps-container">
@@ -86,7 +132,9 @@
                 </div>
             </article>
         </section>
-        <section class="store-section">
+
+        <!-- STORE SECTION -->
+        <section class="store-section" id="store-section">
             <h1>STORE</h1>
             <article class="filter-container">
                 <p class="filter active">All games</p>
@@ -135,12 +183,94 @@
                         <button class="add-btn">Add to cart</button>
                     </div>
                 </div>
+                </div>
+                <div class="cardGame">
+                    <div class="cardGameInfo onHover">
+                        <h4>Grand Theft Auto</h4>
+                        <div class="genres">
+                            <p>Action</p>
+                            <p>Adventure</p>
+                        </div>
+                        <div class="rating-price">
+                            <p><img src="assets/starIcon.png" alt=""><b>Rating:</b>4.8</p>
+                            <p><img src="assets/priceIcon.png" alt=""><b>Price</b>10</p>
+                        </div>
+                        <div class="recommendedSystem">
+                            <p>Revailable spaceSound Card: 100% DirectX 10 compatible</p>
+                        </div>
+                        <button class="add-btn">Add to cart</button>
+                    </div>
+                </div>
+                </div>
+                <div class="cardGame">
+                    <div class="cardGameInfo onHover">
+                        <h4>Grand Theft Auto</h4>
+                        <div class="genres">
+                            <p>Action</p>
+                            <p>Adventure</p>
+                        </div>
+                        <div class="rating-price">
+                            <p><img src="assets/starIcon.png" alt=""><b>Rating:</b>4.8</p>
+                            <p><img src="assets/priceIcon.png" alt=""><b>Price</b>10</p>
+                        </div>
+                        <div class="recommendedSystem">
+                            <p>Revailable spaceSound Card: 100% DirectX 10 compatible</p>
+                        </div>
+                        <button class="add-btn">Add to cart</button>
+                    </div>
+                </div>
+                </div>
+                <div class="cardGame">
+                    <div class="cardGameInfo onHover">
+                        <h4>Grand Theft Auto</h4>
+                        <div class="genres">
+                            <p>Action</p>
+                            <p>Adventure</p>
+                        </div>
+                        <div class="rating-price">
+                            <p><img src="assets/starIcon.png" alt=""><b>Rating:</b>4.8</p>
+                            <p><img src="assets/priceIcon.png" alt=""><b>Price</b>10</p>
+                        </div>
+                        <div class="recommendedSystem">
+                            <p>Revailable spaceSound Card: 100% DirectX 10 compatible</p>
+                        </div>
+                        <button class="add-btn">Add to cart</button>
+                    </div>
+                </div>
+                </div>
+                <div class="cardGame">
+                    <div class="cardGameInfo onHover">
+                        <h4>Grand Theft Auto</h4>
+                        <div class="genres">
+                            <p>Action</p>
+                            <p>Adventure</p>
+                        </div>
+                        <div class="rating-price">
+                            <p><img src="assets/starIcon.png" alt=""><b>Rating:</b>4.8</p>
+                            <p><img src="assets/priceIcon.png" alt=""><b>Price</b>10</p>
+                        </div>
+                        <div class="recommendedSystem">
+                            <p>Revailable spaceSound Card: 100% DirectX 10 compatible</p>
+                        </div>
+                        <button class="add-btn">Add to cart</button>
+                    </div>
+                </div>
             </article>
         </section>
     </main>
 
 
-    <footer class="footer-section"><p>Hola soy footer</p></footer>
+    <footer class="footer-section">
+        
+        <ul class="redes-footer">
+                <a href=""></a>
+                <li><a href="https://www.linkedin.com/in/natalia-camila-vega-74783b228/" target="_blank"><i class="fa-brands fa-linkedin"></i></a></li>
+                <li><a href="https://github.com/nataliavega98" target="_blank"><i class="fa-brands fa-github"></i></a></li>
+                <li><a href=""><i class="fa-brands fa-square-behance"target="_blank"></i></a></li>
+        </ul>
+        <p>Designed and developed by Natalia Vega</p>
+    </footer>
     <script src="dataBanner.js"></script>
+    <script src="index.js"></script>
 </body>
 </html>
