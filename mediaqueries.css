@@ -31,7 +31,14 @@
     gap: 24px;
     padding: 0px;
   }
-
+  .button-slider-container {
+    height: 50%;
+    width: 25vw;
+    background:none;
+  }
+  #nextVideo:hover, #previousVideo:hover {
+    background: none;
+  }
   .gaming-logo {
     width: 19%;
   }
@@ -171,9 +178,40 @@
   .logoAndDescription button {
     width: 100%;
   }
+
+  /* //carrito */
+  .product-quantity-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+}
+.products-container {
+  display: flex;
+  gap: 20px;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+  height: 190px;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  height: auto;
+}
+.products-container img {
+  border-radius: 7px;
+  height: 100px;
+  width: 90px;
+  object-fit: cover;
+}
+.product-info-container {
+  flex-direction: column;
+  height: 190px;
+  align-items: center;
+}
 }
 
-@media (max-width: 730px) {
+@media (max-width: 500px) {
   .game-info,
   .navigationBar,
   .htb-section,
@@ -212,8 +250,9 @@
     width: 100vw;
   }
   .button-slider-container {
-    height: 100%;
+    height: 50%;
     width: 25vw;
+    background:none;
   }
   .logoAndDescription button {
     width: 200px;
@@ -221,4 +260,16 @@
   .hero-section::before {
     width: 100%;
   }
+}
+@media (max-width: 400px) {
+   
+    .game-info {
+
+        padding: 0;
+        width: 100%;
+
+    }
+    .logoAndDescription button {
+        width: 100%;
+      }
 }
