@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Logo de la pestaña -->
+    <link rel="icon" href="../assets/logoPage.png" />
+
+    <!-- Hojas de estilo en cascada -->
+    <link rel="stylesheet" href="signup.css" />
+
+    <!-- iconos de FontAwesome -->
+    <script
+      src="https://kit.fontawesome.com/69ab8990bd.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>Gaming Store: Create an account</title>
+  </head>
+  <body>
+    <main>
+      <section class="login-data-container">
+
+        <button class="backtostore"><i class="fa-solid fa-arrow-left-long"></i>back to the store</button>
+
+        <img src="../assets/gamingstore-logo.svg" alt="Logo Gaming Store" />
+        <article class="form-container">
+          <h2>Create an account</h2>
+          <form action="">
+
+
+
+            <!-- Nombre -->
+            <div class="nameInput">
+              <label for="name"></label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Name"
+              />
+            </div>
+
+            <!-- Pais -->
+            <div class="countryInput">
+              <label for="country"></label>
+              <input
+                type="text"
+                name="country"
+                id="country"
+                placeholder="Your country"
+              />
+            </div>
+
+            <!-- Fecha de nacimiento -->
+            <div class="birthdayInput">
+              <label for="birthday"></label>
+              <input
+                type="text"
+                name="birthday"
+                id="birthday"
+                placeholder="Your birthday"
+              />
+            </div>
+
+            <!-- correo electronico -->
+            <div class="newuserInput">
+              <label for="newuser"></label>
+              <input
+                type="text"
+                name="newuser"
+                id="newuser"
+                placeholder="Your e-mail adress"
+              />
+            </div>
+            
+            <!-- contraseña -->
+            <div class="newpassInput">
+              <label for="newcurrent-password"></label>
+              <input
+                type="newcurrent-password"
+                name="newcurrent-password"
+                id="newcurrent-password"
+                placeholder="create a password"
+              />
+            </div>
+
+            <!-- repetir contraseña -->
+            <div class="repeatpassInput">
+              <label for="current-password"></label>
+              <input
+                type="repeatcurrent-password"
+                name="repeatcurrent-password"
+                id="repeatcurrent-password"
+                placeholder="repeat password"
+              />
+            </div>
+
+            <button type="submit" class="form-login-button">create</button>
+          </form>
+          <p class="createAcc">Already have an account?<button class="goLoginbtn"> Login</button></p>
+        </article>
+
+      </section>
+      <section class="nameBackgroundGame">
+        
+      </section>
+    </main>
+
+    <script src="signup.js"></script>
+  </body>
+</html>

@@ -503,7 +503,7 @@ video {
 }
 
 .cardGame {
-  background-image: url(assets/gta.png);
+  background-image: url(../assets/gta.png);
   background-position: center;
   background-repeat: no-repeat;
   border-radius: 16px;
@@ -781,8 +781,3 @@ footer {
 
 
 
-/* //LOGIN SIGN IN */
-
-body {
-  
-}

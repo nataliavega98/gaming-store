@@ -1,0 +1,231 @@
+@import url("https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Maven+Pro:wght@400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+/* font-family: 'Exo 2', sans-serif;
+font-family: 'Maven Pro', sans-serif;
+font-family: 'Roboto', sans-serif; */
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  user-select: none;
+}
+
+:root {
+  --background: #121212;
+  --button-cart-active: #b535f6;
+  --button-cart-enabled: #b535f6b2;
+  --button-cart-disabled: #9d8ca6;
+  --white: #ffffff;
+  --whiteInactive: #ffffffd0;
+  --white-glass: #ffffff0f;
+  --card-background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.05),
+      rgba(255, 255, 255, 0.05)
+    ),
+    #121212;
+
+  --light-purple: #d175ff80;
+}
+body {
+  background-position: center;
+  background-repeat: no-repeat;
+
+  background-size: cover;
+  background-attachment: fixed;
+}
+main {
+  display: flex;
+  justify-content: space-between;
+  height: 100vh;
+}
+
+.login-data-container {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  align-items: center;
+  background: rgba(18, 18, 18, 0.25);
+  backdrop-filter: blur(9.5px);
+  border-radius: 0px 32px 32px 0px;
+  gap: 100px;
+  padding: 24px;
+}
+.login-data-container img {
+  width: 250px;
+  align-self: center;
+}
+.backtostore {
+  background: none;
+  border: none;
+  height: 40px;
+  padding: 8px 16px;
+  text-align: center;
+  letter-spacing: 0.15px;
+  font-variant: small-caps;
+  color: #ffffff;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  align-self: flex-start;
+
+  cursor: pointer;
+}
+
+.backtostore:hover{
+  background: #ffffff3e;
+  backdrop-filter: blur(9.5px);
+  border-radius: 4px;
+}
+.backtostore:active{
+  background: #ffffff3e;
+  backdrop-filter: blur(9.5px);
+  border-radius: 4px;
+}
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  gap: 25px;
+  width: 250px;
+}
+
+.form-container h2 {
+  font-family: "Maven Pro";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 24px;
+  color: white;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+}
+form div {
+  width: 100%;
+}
+form input {
+  width: 100%;
+  background: #ffffff80;
+
+  height: 40px;
+  border: none;
+  outline: none;
+  border-radius: 4px 4px 0 0;
+  border-bottom: 3px solid #ffffffa8;
+
+  padding: 4px 16px;
+
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: gray;
+}
+form input::placeholder {
+  color: #ffffffa8;
+  font-family: "Roboto";
+  font-style: thin;
+}
+form input:focus-visible {
+  color: black;
+  outline: none;
+  border-bottom: 3px solid #b535f6;
+  background: #ffffffeb;
+}
+.form-login-button {
+  width: 100%;
+  background: #9d8ca6;
+  border-radius: 4px;
+  border: none;
+
+
+  backdrop-filter: blur(5.5px);
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  height: 40px;
+  padding: 8px 16px;
+
+  text-align: center;
+  letter-spacing: 0.15px;
+  font-variant: small-caps;
+
+  color: #ffffff;
+  transition: background 0.5s ease;
+}
+
+.form-login-button:hover {
+  cursor: pointer;
+  background: #b535f6;
+  transition: background 0.5s ease;
+}
+
+.nameBackgroundGame {
+  display: flex;
+  align-items: flex-end;
+}
+
+.nameBackgroundGame h3 {
+  font-family: "Exo 2";
+  font-style: normal;
+  font-weight: 300;
+
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: 0.15px;
+  color: #ffff;
+  padding: 8px 24px;
+  background: #ffffff3e;
+  backdrop-filter: blur(9.5px);
+  border-radius: 4px 0 0 0;
+}
+
+.createAcc {
+  display: flex;
+  color: white;
+
+  background: none;
+  border: none;
+  height: 40px;
+  padding: 8px 16px;
+  text-align: center;
+  letter-spacing: 0.15px;
+  font-variant: small-caps;
+  color: #ffffff;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+
+
+  font-size: 14px;
+  width: 100%;
+  font-family: roboto;
+  padding: 0;
+}
+
+.createAcc button {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #b535f6;
+  font-weight: 600;
+  cursor: pointer;
+  border-bottom: 1px solid #b635f600;
+
+}
+
+.createAcc button:hover {
+  border-bottom: 1px solid #b535f6;
+
+}

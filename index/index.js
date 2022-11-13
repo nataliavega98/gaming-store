@@ -28,6 +28,9 @@ const volumeBtn = document.querySelector(".volume");
 //video
 const videoBanner = document.querySelector("video");
 
+//boton login
+const loginButton = document.querySelector(".loginButton");
+
 // NAV BAR FIXED CHANGE COLOR ON SCROLL
 // Medidas de hero y de todo el documento
 // console.log(heroSection.scrollHeight);
@@ -107,6 +110,12 @@ init = () => {
   menuBtnOpen.addEventListener("click", toggleMenu);
   menuBtnClose.addEventListener("click", toggleMenu);
 
+  //ir al login
+  loginButton.addEventListener("click", () => {
+    setTimeout(() => {
+      document.location.href = "../login/login.html";
+    }, 2000);
+  });
 };
 
 init();
