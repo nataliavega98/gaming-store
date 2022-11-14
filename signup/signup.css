@@ -36,22 +36,25 @@ body {
 
   background-size: cover;
   background-attachment: fixed;
+
+  transition: all 300ms ease-in 200ms;
 }
 main {
   display: flex;
   justify-content: space-between;
   height: 100vh;
+  flex-wrap: wrap;
 }
 
 .login-data-container {
   display: flex;
   flex-direction: column;
-  width: 40%;
+  width: 600px;
   align-items: center;
   background: rgba(18, 18, 18, 0.25);
-  backdrop-filter: blur(9.5px);
+  backdrop-filter: blur(2.5px);
   border-radius: 0px 32px 32px 0px;
-  gap: 100px;
+  gap: 70px;
   padding: 24px;
 }
 .login-data-container img {
@@ -117,7 +120,7 @@ form div {
   /* width: 100%; */
   flex: 0 0 250px;
 }
-form input {
+form input, select, select > option {
   width: 100%;
   background: #ffffff80;
 
@@ -134,7 +137,7 @@ form input {
   font-weight: 400;
   font-size: 14px;
   line-height: 24px;
-  color: gray;
+  color: rgb(0, 0, 0);
 }
 form input::placeholder {
   color: #ffffffa8;
@@ -147,9 +150,23 @@ form input:focus-visible {
   border-bottom: 3px solid #b535f6;
   background: #ffffffeb;
 }
-form input:focus > input::placeholder {
-    color: green;
-  }
+form input:focus::placeholder {
+  color: #e1a4ff;
+}
+select {
+  color: #ffffffa8;
+}
+select:focus {
+  appearance: none;
+  outline: 0;
+  background: #ffffff80;
+  background-image: none;
+  width: 100%;
+  color: black;
+  cursor: pointer;
+
+}
+
 
 .form-login-button {
   width: 100%;
@@ -181,6 +198,9 @@ form input:focus > input::placeholder {
 .nameBackgroundGame {
   display: flex;
   align-items: flex-end;
+  flex: 1 0 180px;
+  /* max-width: 100%; */
+  justify-content: flex-end;
 }
 
 .nameBackgroundGame h3 {
@@ -234,4 +254,30 @@ form input:focus > input::placeholder {
 
 .createAcc button:hover {
   border-bottom: 1px solid #b535f6;
+}
+
+
+.showMessage {
+  color: red;
+  font-family:'Roboto', sans-serif;
+}
+
+form div {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+#passwordInput {
+  display: flex;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+#passwordInput i{
+  position: absolute;
+  right: 16px;
+  top: 16px;
+  cursor: pointer;
 }

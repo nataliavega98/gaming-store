@@ -36,6 +36,8 @@ body {
 
   background-size: cover;
   background-attachment: fixed;
+
+  transition: all 300ms ease-in 200ms;
 }
 main {
   display: flex;
@@ -141,6 +143,9 @@ form input:focus-visible {
   outline: none;
   border-bottom: 3px solid #b535f6;
   background: #ffffffeb;
+}
+form input:focus::placeholder {
+  color: #e1a4ff;
 }
 .form-login-button {
   width: 100%;

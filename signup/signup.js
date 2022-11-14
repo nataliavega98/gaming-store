@@ -1,4 +1,6 @@
 //Variables
+
+const form = document.querySelector("form");
 //url de la API
 const baseURL = "https://api.rawg.io/api/";
 
@@ -24,6 +26,21 @@ function getRandomGame(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
+function styleBackground(game, image) {
+  //Colocar background image al body
+  document.body.style.backgroundImage = `url(${image})`;
+  nameBackgroundGame.innerHTML = `<h3>Find "${game.name}" in our store</h3>`;
+}
+
+function isValidBG(game, image) {
+  //que vuelva
+  if (image === null) {
+    document.body.style.backgroundColor = "#121212";
+  } else {
+    styleBackground(game, image);
+  }
+}
+
 //traer background de la API
 const traerBackgrounds = async () => {
   try {
@@ -39,32 +56,16 @@ const traerBackgrounds = async () => {
     console.log(data.results[getRandomGame(0, 40)]);
 
     const randomPopularGame2022 = data.results[getRandomGame(0, 40)];
+    const getBackgroundImage = randomPopularGame2022.background_image;
 
-    const getBackgroundImage = await randomPopularGame2022.background_image;
-    console.log(getBackgroundImage);
-
-    //Colocar background image al body
-    document.body.style.backgroundImage = `url(${getBackgroundImage})`;
-    nameBackgroundGame.innerHTML = `<h3>Find "${randomPopularGame2022.name}" in our store</h3>`;
+    styleBackground(randomPopularGame2022, getBackgroundImage);
   } catch (err) {
     console.log(err);
   }
 };
 
+// //cada 30s cambia el fondo ACTIVVAR
+// setInterval(traerBackgrounds, 30000);
+
 //redirrecion al store back
 
-const init = () => {
-  traerBackgrounds();
-  backtostore.addEventListener("click", () => {
-    setTimeout(() => {
-      document.location.href = "../index.html";
-    }, 2000);
-  });
-  goLoginbtn.addEventListener("click", () => {
-    setTimeout(() => {
-      document.location.href = "../login/login.html";
-    }, 2000);
-  });
-};
-
-init();

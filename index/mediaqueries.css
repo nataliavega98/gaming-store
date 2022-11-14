@@ -65,7 +65,7 @@
     display: none;
   }
   .gaming-logo {
-    background-image: url(assets/logoPage.png);
+    background-image: url(../assets/logoPage.png);
     background-repeat: no-repeat;
     background-position: center;
     object-fit: cover;
