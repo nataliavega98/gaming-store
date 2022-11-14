@@ -113,7 +113,7 @@ init = () => {
   //ir al login
   loginButton.addEventListener("click", () => {
     setTimeout(() => {
-      document.location.href = "../login/login.html";
+      document.location.href = "./login/login.html";
     }, 2000);
   });
 };

@@ -57,7 +57,7 @@ const init = () => {
   traerBackgrounds();
   backtostore.addEventListener("click", () => {
     setTimeout(() => {
-      document.location.href = "../index/index.html";
+      document.location.href = "../index.html";
     }, 2000);
   });
   gotocreatebtn.addEventListener("click", () => {
