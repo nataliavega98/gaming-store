@@ -69,3 +69,57 @@ const traerBackgrounds = async () => {
 
 //redirrecion al store back
 
+const submitForm = (e) => {
+  e.preventDefault();
+  getOlderThan();
+  const isValidForm = () => {
+    // funcion para validar el formulario
+    const isValidName = checkTextInput(nameInput); // validamos el nombre
+    const isValidEmail = checkEmail(emailInput); // validamos el email
+    const isValidCountry = checkCountry(countryInput, countryOption); // validamos el apellido
+    const isValidDate = checkDate(birthdayInput); // validamos la fecha
+    const isValidPassword = checkPassword(passwordInput); // validamos el telefono
+    const isValidRepPass = checkPassword(passwordField);
+    return (
+      isValidName &&
+      isValidDate &&
+      isValidEmail &&
+      isValidCountry &&
+      isValidRepPass &&
+      isValidPassword
+    );
+  };
+  console.log(isValidForm());
+  if (isValidForm()) {
+    saveData(); // guardamos los datos
+    form.reset(); // reseteamos el formulario
+    saveLocalStorage(); // guardamos en el localstorage
+    form.submit();
+    window.location.href = "../index.html";
+
+  }
+};
+
+// console.log(user.name)
+
+// const fillUserLogin = () => {
+//     if(user[-1].name)
+// }
+
+
+const init = () => {
+  traerBackgrounds();
+  backtostore.addEventListener("click", () => {
+    setTimeout(() => {
+      document.location.href = "../index.html";
+    }, 2000);
+  });
+  goLoginbtn.addEventListener("click", () => {
+    setTimeout(() => {
+      document.location.href = "../login/login.html";
+    }, 2000);
+  });
+  form.addEventListener("submit", submitForm); // al enviar el formulario se ejecuta la funcion submitForm
+};
+
+init();

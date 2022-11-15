@@ -40,21 +40,24 @@ body {
   transition: all 300ms ease-in 200ms;
 }
 main {
-  display: flex;
-  justify-content: space-between;
-  height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    height: 100vh;
+    flex-wrap: wrap;
 }
 
 .login-data-container {
-  display: flex;
-  flex-direction: column;
-  width: 40%;
-  align-items: center;
-  background: rgba(18, 18, 18, 0.25);
-  backdrop-filter: blur(9.5px);
-  border-radius: 0px 32px 32px 0px;
-  gap: 100px;
-  padding: 24px;
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    align-items: center;
+    background: rgba(18, 18, 18, 0.25);
+    backdrop-filter: blur(2.5px);
+    border-radius: 0px 32px 32px 0px;
+    gap: 70px;
+    padding: 24px;
+    flex FONT-WEIGHT: 100;
+    height: auto;
 }
 .login-data-container img {
   width: 250px;
@@ -175,10 +178,7 @@ form input:focus::placeholder {
   transition: background 0.5s ease;
 }
 
-.nameBackgroundGame {
-  display: flex;
-  align-items: flex-end;
-}
+.nameBackgroundGame {display: flex;align-items: flex-end;flex: 1 0 180px;/* max-width: 100%; */justify-content: flex-end;}
 
 .nameBackgroundGame h3 {
   font-family: "Exo 2";

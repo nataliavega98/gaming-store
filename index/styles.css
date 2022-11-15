@@ -778,6 +778,30 @@ footer {
 
   padding: 16px;
 }
+.userprofile {
+  display: none;
+}
+.open-user {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 100px;
+  height: auto;
+  width: 70px;
+  z-index: 10000;
+  background-color: #121212be;
+  backdrop-filter: blur(3px);
+  color: #F2788E;
+  padding: 16px 8px;
+  border-radius: 4px;
+  font-family: roboto;
+  font-weight: 400;
+  font-size: 14px;
+  
+}
 
-
+.userButton {
+  height: 140px;
+  position: relative;
+}
 

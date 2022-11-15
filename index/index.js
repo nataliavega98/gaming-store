@@ -31,6 +31,12 @@ const videoBanner = document.querySelector("video");
 //boton login
 const loginButton = document.querySelector(".loginButton");
 
+//second menu list
+const secondMl = document.querySelector(".second-ml");
+const userButton = document.querySelector(".userButton");
+const userProfile = document.querySelector(".userprofile");
+const userNW = document.querySelector(".user-name-welcome");
+const logoutBtn = document.querySelector(".logoutBtn");
 // NAV BAR FIXED CHANGE COLOR ON SCROLL
 // Medidas de hero y de todo el documento
 // console.log(heroSection.scrollHeight);
@@ -68,10 +74,9 @@ const unmuteVideo = () => {
 const toggleCart = () => {
   cartContainer.classList.toggle("open");
 
-  
-  if(menuContainer.classList.contains("open-menu")){
+  if (menuContainer.classList.contains("open-menu")) {
     menuContainer.classList.remove("open-menu");
-    return
+    return;
   }
   overlayMenu.classList.toggle("show-overlay");
 };
@@ -86,12 +91,18 @@ const closeOnScroll = () => {
 const toggleMenu = () => {
   menuContainer.classList.toggle("open-menu");
 
-  if(cartContainer.classList.contains("open")){
+  if (cartContainer.classList.contains("open")) {
     cartContainer.classList.toggle("open");
-    return
+    return;
   }
 
   overlayMenu.classList.toggle("show-overlay");
+};
+const toggleOnHoverUser = () => {
+  userProfile.classList.add("open-user");
+};
+const mouseLeftHoverUser = () => {
+  userProfile.classList.remove("open-user");
 };
 
 //
@@ -99,6 +110,42 @@ const closeOnOverlayClick = () => {
   menuContainer.classList.remove("open-menu");
   cartContainer.classList.remove("open");
   overlayMenu.classList.remove("show-overlay");
+};
+
+let user = JSON.parse(localStorage.getItem("user")) || []; // obtenemos los datos del localstorage o creamos un arreglo vacio
+
+// const replaceNameToLogin = () => {
+//   const lastIndexOfArrayUser = user.length - 1;
+//   const name = user[lastIndexOfArrayUser].name;
+
+//   loginButton.style.display = "none";
+//   userButton.style.display = "flex";
+//   userNW.innerHTML = `${name}`;
+// };
+
+const checkLogin = () => {
+  const [{ name, isloged }] = user;
+  if (isloged) {
+    // console.log("Si está logueado");
+    // console.log(name);
+    loginButton.style.display = "none";
+    userButton.style.display = "flex";
+    userNW.innerHTML = `${name}`;
+  } else {
+    return 
+  }
+};
+
+const replaceNameToLogout = () => {
+  // const lastIndexOfArrayUser = user.length - 1;
+  // const name = user[lastIndexOfArrayUser].name;
+  let loginData = user
+  loginData[0].isloged = null;
+  localStorage.setItem("user", JSON.stringify(user));
+  
+  loginButton.style.display = "flex";
+  userButton.style.display = "none";
+
 };
 
 init = () => {
@@ -116,6 +163,14 @@ init = () => {
       document.location.href = "./login/login.html";
     }, 2000);
   });
+  checkLogin();
+  //desplegar menu cuando se inicio sesion
+  userButton.addEventListener("mouseover", toggleOnHoverUser);
+  userProfile.addEventListener("mouseover", toggleOnHoverUser);
+  userButton.addEventListener("mouseleave", mouseLeftHoverUser);
+
+  //logout
+  logoutBtn.addEventListener("click", replaceNameToLogout);
 };
 
 init();

@@ -10,8 +10,6 @@ const showPassword1 = document.querySelector("#show-password1");
 const showPassword2 = document.querySelector("#show-password2");
 const newpassInput = document.querySelector("#newpassInput");
 
-
-
 //error
 
 const showError = (input, message) => {
@@ -175,4 +173,16 @@ const isPassValid = (pass) => {
   return re.test(pass);
 };
 
+//check passwords iguales
 
+const checkRepeatPassword = (passInput, passRepPass) => {
+  let valid = false;
+  const password = passInput.value.trim();
+  const passrepeat = passRepPass.value.trim();
+  if (password == passrepeat) {
+    valid = true;
+  } else {
+    showError(passRepPass, "Passwords must match.");
+  }
+  return valid;
+};

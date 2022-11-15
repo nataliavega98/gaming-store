@@ -67,7 +67,9 @@ const traerBackgrounds = async () => {
 
 //redirrecion al store back
 
-const init = () => {
+
+
+const initBG = () => {
   traerBackgrounds();
   backtostore.addEventListener("click", () => {
     setTimeout(() => {
@@ -81,4 +83,4 @@ const init = () => {
   });
 };
 
-init();
+initBG();
