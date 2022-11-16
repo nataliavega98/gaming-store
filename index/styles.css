@@ -848,3 +848,31 @@ footer {
   display: flex;
   gap: 4px;
 }
+
+.pageControl {
+  display: flex;
+  justify-content: center;
+  gap:8px;
+  align-items: center;
+  color: white;
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.pageControl button {
+  height: 42px;
+  width:42px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.pageControl button i {
+  
+  font-size: 24px;
+  color: white;
+}
+
+.pageprevBtn {
+  display: none;
+}
