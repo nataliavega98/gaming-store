@@ -63,7 +63,7 @@ main {
 }
 /* HEADER NAV BAR */
 .menu {
-    display: none;
+  display: none;
 }
 .overlayMenu {
   display: none;
@@ -158,18 +158,18 @@ header {
   backdrop-filter: blur(3px);
 }
 i.menu {
-    display: none;
+  display: none;
 }
 i.close-menu {
-    display: none;
+  display: none;
 }
 
 .menu-container li:last-child {
-    display: none;
+  display: none;
 }
 
 .genresAndVolume i {
-    cursor: pointer;
+  cursor: pointer;
 }
 /* HERO SECTION */
 
@@ -503,11 +503,10 @@ video {
 }
 
 .cardGame {
-  background-image: url(../assets/gta.png);
   background-position: center;
   background-repeat: no-repeat;
   border-radius: 16px;
-
+  background-size: cover;
   flex: 0 0 330px;
   height: 390px;
 
@@ -519,7 +518,7 @@ video {
   font-family: "Exo 2";
   font-style: normal;
   font-weight: 600;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 24px;
 }
 
@@ -559,7 +558,7 @@ video {
   border: 1.5px solid rgba(255, 255, 255, 0.75);
   border-radius: 50px;
   width: fit-content;
-  padding: 0px 16px;
+  padding: 0px 8px;
 }
 
 .rating-price {
@@ -585,13 +584,17 @@ video {
 
 /*Carta con hover*/
 .cardGameInfo:hover > .recommendedSystem {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .cardGameInfo:hover {
   height: 90%;
   transition: all 1s ease-in-out;
   overflow: hidden;
+  background: rgba(0, 0, 0, 0.30);
+
 }
 
 /* CART  */
@@ -791,13 +794,12 @@ footer {
   z-index: 10000;
   background-color: #121212be;
   backdrop-filter: blur(3px);
-  color: #F2788E;
+  color: #f2788e;
   padding: 16px 8px;
   border-radius: 4px;
   font-family: roboto;
   font-weight: 400;
   font-size: 14px;
-  
 }
 
 .userButton {
@@ -805,3 +807,44 @@ footer {
   position: relative;
 }
 
+.dataGame {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.tags {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.titleTag {
+  display: flex;
+  gap: 8px;
+}
+
+.tagsGame {
+  display: flex;
+  gap: 2px;
+  /* align-items: center; */
+  width: 100%;
+
+}
+
+.userratings {
+  display: flex;
+  flex-direction: column;
+  text-transform: capitalize;
+}
+
+.allrates {
+  padding-left: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.dataGame p{
+  display: flex;
+  gap: 4px;
+}

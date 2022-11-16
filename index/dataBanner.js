@@ -137,10 +137,4 @@ previousVideoButton.addEventListener("click", () => {
   videoPlayer.play();
 });
 
-//DATA API
-// GET https://api.rawg.io/api/platforms?key=YOUR_API_KEY
-// GET https://api.rawg.io/api/games?key=YOUR_API_KEY&dates=2019-09-01,2019-09-30&platforms=18,1,7
 
-const baseURL = "https://api.rawg.io/api/";
-
-const apiKey = "?key=de1dd16a530a4929b4b429dfe19acc7b";
