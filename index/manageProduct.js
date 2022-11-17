@@ -31,7 +31,7 @@ const pagenextBtn = document.querySelector(".pagenextBtn");
 const pageprevBtn = document.querySelector(".pageprevBtn");
 const pageControlContainer = document.querySelector(".pageControl");
 const pageNumberP = document.querySelector(".pageNumber");
-console.log(pageNumberP.innerText);
+// console.log(pageNumberP.innerText);
 //Llamado a la api
 const fetchAPI = async () => {
   try {
@@ -41,7 +41,7 @@ const fetchAPI = async () => {
     //Filtro todos los juegos primero, el filtro será redefinido segun la categoria
     const data = await response.json();
     const results = data.results;
-    console.log(results);
+    // console.log(results);
     console.log(data);
 
     renderProductRequested(results);
@@ -49,6 +49,11 @@ const fetchAPI = async () => {
     console.log(err);
   }
 };
+
+//como no tiene precio la API genero un numero random
+function getRandomPrice() {
+  return Math.floor(Math.random() * (100 - 1 + 1) + 1);
+}
 
 // render produtcs en el contenedor del store
 
@@ -64,7 +69,9 @@ const renderProductStore = (game) => {
     released,
     tags,
     ratings,
+    metacritic //uso metacritic para precio porque no hay valor en la api
   } = game;
+  let quantity = 1;
   // console.log(
   //   `${id}-${name}-${background_image}-${genresRender(
   //     genres
@@ -82,7 +89,7 @@ const renderProductStore = (game) => {
                     </div>
                     <div class="rating-price">
                         <p><img src="./assets/starIcon.png" alt=""><b>Rating:</b>${rating}</p>
-                        <p><img src="./assets/priceIcon.png" alt=""><b>Price</b>10</p>
+                        <p><img src="./assets/priceIcon.png" alt=""><b>Price</b>${metacritic || 50}€</p>
                     </div>
                     <div class="recommendedSystem">
                         <div class="dataGame">
@@ -112,7 +119,7 @@ const renderProductStore = (game) => {
                             </div>
                         </div>
                     </div>
-                    <button class="add-btn">Add to cart</button>
+                    <button class="add-btn" data-id="${id}" data-name="${name}" data-price="${metacritic || 50}" data-bg="${background_image}" data-quantity="${quantity}">Add to cart</button>
                 </div>
                 </div>`;
 };
@@ -142,9 +149,9 @@ const cleanRender = () => {
 };
 
 const filterActiveState = (e) => {
-  console.log(e);
-  console.log(e.target.classList);
-  console.log(filterData);
+  // console.log(e);
+  // console.log(e.target.classList);
+  // console.log(filterData);
   const filterTag = e.target.classList;
   filterData.forEach((filterData) => {
     if (filterData.classList.contains("active")) {
@@ -180,14 +187,14 @@ const renderFilteredProducts = (e) => {
   filterActiveState(e);
   resetStore();
   // products.innerHTML = productsList.map(renderProduct).join("");
-  console.log(baseURL + "games?" + apiKey + filter);
+  // console.log(baseURL + "games?" + apiKey + filter);
 };
 
 //cada vez q haga click sume 1
 // pageNumberP.innerText = 1;
 const nextPage = () => {
   pageNumberP.innerText = parseInt(pageNumberP.innerText) + 1;
-  console.log(pageNumberP.innerText);
+  // console.log(pageNumberP.innerText);
   if (pageNumberP.innerText == 1) {
     pageprevBtn.style.display = "none";
     pageNumber = `&page=${(pageNumberP.innerText = 1)}`;
@@ -198,7 +205,7 @@ const nextPage = () => {
     pageNumber = `&page=${(pageNumberP.innerText = 6)}`;
   } else {
     pageprevBtn.style.display = "block";
-    console.log(pageNumberP.innerText);
+    // console.log(pageNumberP.innerText);
     pageNumber = `&page=${pageNumberP.innerText}`;
   }
 };
@@ -211,14 +218,14 @@ const prevPage = () => {
     pageNumber = `&page=${(pageNumberP.innerText = 1)}`;
   } else {
     pageprevBtn.style.display = "block";
-    console.log(pageNumberP.innerText);
+    // console.log(pageNumberP.innerText);
     pageNumber = `&page=${pageNumberP.innerText}`;
   }
 };
 
 //paginacion
 const changePage = (e) => {
-  console.log(e.target.classList);
+  // console.log(e.target.classList);
   if ( //next page
     e.target.classList.contains("fa-angle-right") ||
     e.target.classList.contains("pagenextBtn")

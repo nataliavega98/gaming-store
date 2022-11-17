@@ -45,10 +45,7 @@
                             <li class="logoutBtn">Log out</li>
                         </ul>
                       </div>
-                    <!-- <select name="dropdownmenu" id="dropdownmenu">
-                        <option value="logout"></option>
-                        <option value="logout">Log out</option>
-                    </select> -->
+
                 </li>
             </nav>
         </ul>
@@ -60,26 +57,29 @@
             <div class="cart-container">
                 <h2>Shopping Cart</h2>
                 <!-- card producto -->
-                <div class="products-container">
-                    <div class="product-info-container">
-                        <img src="./assets/gta.png" alt="">
-                        <div class="product-info">
-                            <h6>Grand Theft Auto</h6>
-                            <p><b>Price:</b> $20</p>
+                <div class="cart-products-container">
+
+                    <!-- <div class="products-container">
+                        <div class="product-info-container">
+                            <img src="./assets/gta.png" alt="">
+                            <div class="product-info">
+                                <h6>Grand Theft Auto</h6>
+                                <p><b>Price:</b> $20</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="product-quantity-container">
-                        <p>Quantity</p>
-                        <div class="product-quantity">
-                            <i class="fa-solid fa-plus addplus-product"></i>
-                            <p class="quantity">1</p>
-                            <i class="fa-solid fa-minus substract-product"></i>
+                        <div class="product-quantity-container">
+                            <p>Quantity</p>
+                            <div class="product-quantity">
+                                <i class="fa-solid fa-plus addplus-product"></i>
+                                <p class="quantity">1</p>
+                                <i class="fa-solid fa-minus substract-product"></i>
+                            </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <!-- total price -->
                 <div class="total-product-container">
-                    <p><b>Total:</b> $20</p>
+                    <p><b>Total:</b> <span class="total">0</span></p>
                     <button class="buy-btn">buy</button>
                     <button class="empty-btn">empty cart</button>
                 </div>
@@ -194,7 +194,7 @@
             </div>
         </section>
     </main>
-
+    <div class="add-modal"></div>
 
     <footer class="footer-section">
         
@@ -209,6 +209,7 @@
     <script src="./index/dataBanner.js"></script>
     <script src="./index/index.js"></script>.
     <script src="./index/manageProduct.js"></script>.
+    <script src="./index/cart.js"></script>.
     
     <!-- <script src="dataUser.js"></script> -->
 

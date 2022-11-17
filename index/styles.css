@@ -498,14 +498,14 @@ video {
   display: flex;
   gap: 24px;
   width: 100%;
-  justify-content: space-between;
+  justify-content: center;
   flex-flow: row wrap;
 }
 
 .cardGame {
   background-position: center;
   background-repeat: no-repeat;
-  border-radius: 16px;
+  border-radius: 24px;
   background-size: cover;
   flex: 0 0 330px;
   height: 390px;
@@ -655,10 +655,31 @@ video {
 
 .products-container img {
   border-radius: 7px;
+  width: 92px;
   height: 100%;
-  object-fit: fill;
+  object-fit: cover;
+  object-position: center;
 }
-
+.add-modal {
+  padding: 15px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-white);
+  background-color: #83ff83;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  font-family: roboto;
+  font-weight: 500;
+  transition: all 1s ease-out;
+  text-align: center;
+  transform: translateY(200%);
+}
+.active-modal {
+  transform: translateY(0);
+  transition: all 1s ease-in;
+}
 .product-info p,
 .product-quantity {
   font-family: "Roboto";
@@ -678,7 +699,11 @@ video {
   align-items: flex-start;
   justify-content: space-between;
 }
-
+.cart-products-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
 .product-quantity-container {
   display: flex;
   flex-direction: column;
