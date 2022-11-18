@@ -22,14 +22,14 @@
   <body>
     <main>
       <section class="login-data-container">
-
-        <button class="backtostore"><i class="fa-solid fa-arrow-left-long"></i>back to the store</button>
+        <button class="backtostore">
+          <i class="fa-solid fa-arrow-left-long"></i>back to the store
+        </button>
 
         <img src="../assets/gamingstore-logo.svg" alt="Logo Gaming Store" />
         <article class="form-container">
           <h2>Login</h2>
           <form action="">
-
             <div class="userInput">
               <label for="user"></label>
               <input
@@ -38,30 +38,32 @@
                 id="user"
                 placeholder="e-mail adress"
               />
-              <small></small>
+              <small class="showmessage"></small>
             </div>
-            
             <div class="passInput">
-              <label for="current-password"></label>
-              <input
-                type="current-password"
-                name="current-password"
-                id="current-password"
-                placeholder="password"
-              />
-              <small></small>
-
+              <div class="passwordContainer">
+                <label for="current-password" class="current-password">
+                  <input
+                    type="password"
+                    name="current-password"
+                    id="current-password"
+                    placeholder="password"
+                  /><i class="fa-regular fa-eye-slash" id="show-password"></i>
+                </label>
+                <small class="showmessage"></small>
+              </div>
             </div>
 
             <button type="submit" class="form-login-button">log in</button>
           </form>
-          <p class="createAcc">New to Gaming Store?<button class="gotocreatebtn"> Create an account</button></p>
+          <p class="createAcc">
+            New to Gaming Store?<button class="gotocreatebtn">
+              Create an account
+            </button>
+          </p>
         </article>
-
       </section>
-      <section class="nameBackgroundGame">
-        
-      </section>
+      <section class="nameBackgroundGame"></section>
     </main>
 
     <script src="login.js"></script>

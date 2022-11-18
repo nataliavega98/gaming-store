@@ -56,7 +56,7 @@ main {
     border-radius: 0px 32px 32px 0px;
     gap: 70px;
     padding: 24px;
-    flex FONT-WEIGHT: 100;
+    
     height: auto;
 }
 .login-data-container img {
@@ -233,4 +233,16 @@ form input:focus::placeholder {
 .createAcc button:hover {
   border-bottom: 1px solid #b535f6;
 
+}
+
+label.current-password {
+  position: relative;
+  display: flex;
+}
+
+i#show-password {
+  position: absolute;
+  right: 16px;
+  top: 12px;
+  cursor: pointer;
 }

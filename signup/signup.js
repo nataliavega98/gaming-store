@@ -95,7 +95,10 @@ const submitForm = (e) => {
     form.reset(); // reseteamos el formulario
     saveLocalStorage(); // guardamos en el localstorage
     form.submit();
-    window.location.href = "../index.html";
+    if (window.confirm("Your account has been created succesfully. If you want to enter your account click on 'accept' and log in with your user data")) {
+      window.location.href = "../login/login.html";
+      
+    }
 
   }
 };

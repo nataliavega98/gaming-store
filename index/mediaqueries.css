@@ -56,7 +56,16 @@
   .footer-section {
     padding: 0 60px;
   }
-
+  .menu-container li:last-child {
+    display: block;
+    background-color: white;
+    border-radius: 4px;
+    color: black;
+    font-weight: 700;
+    text-align: center;
+    /* justify-self: center; */
+    padding: 8px;
+}
   .game-info {
     gap: 24px;
     padding: 0px;

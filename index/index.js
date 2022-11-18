@@ -1,3 +1,5 @@
+let user = JSON.parse(localStorage.getItem("user")) || []; // obtenemos los datos del localstorage o creamos un arreglo vacio
+
 // contenedor game info del banner
 const gameBannerSection = document.getElementById("game-info");
 
@@ -112,8 +114,6 @@ const closeOnOverlayClick = () => {
   overlayMenu.classList.remove("show-overlay");
 };
 
-let user = JSON.parse(localStorage.getItem("user")) || []; // obtenemos los datos del localstorage o creamos un arreglo vacio
-
 // const replaceNameToLogin = () => {
 //   const lastIndexOfArrayUser = user.length - 1;
 //   const name = user[lastIndexOfArrayUser].name;
@@ -122,30 +122,48 @@ let user = JSON.parse(localStorage.getItem("user")) || []; // obtenemos los dato
 //   userButton.style.display = "flex";
 //   userNW.innerHTML = `${name}`;
 // };
-
-const checkLogin = () => {
-  const [{ name, isloged }] = user;
-  if (isloged) {
-    // console.log("Si está logueado");
-    // console.log(name);
+const isSomeoneLoged = () => {
+  //Me trago el usuario que tiene loged true
+  const userloged = user.find((loged) => loged.isLoged == true);
+  //Si no encuentra true que
+  console.log(!userloged)
+  if (!userloged) {
+    return;
+  } else if (userloged.isLoged == true) {
     loginButton.style.display = "none";
     userButton.style.display = "flex";
-    userNW.innerHTML = `${name}`;
-  } else {
-    return 
+    userNW.innerHTML = userloged.name;
+
+    //Le asigno el id al boton logout para luego poder sacarlo y poner en false el isLoged
+    logoutBtn.setAttribute("data-userid", `${userloged.id}`);
   }
 };
+// const checkLogin = () => {
+//   const [{ name, isloged }] = user;
+//   if (isloged) {
+//     // console.log("Si está logueado");
+//     // console.log(name);
+//     loginButton.style.display = "none";
+//     userButton.style.display = "flex";
+//     userNW.innerHTML = `${name}`;
+//   } else {
+//     return
+//   }
+// };
 
-const replaceNameToLogout = () => {
+const replaceNameToLogout = (e) => {
   // const lastIndexOfArrayUser = user.length - 1;
   // const name = user[lastIndexOfArrayUser].name;
-  let loginData = user
-  loginData[0].isloged = null;
+  //Paso mi string del boton dataset-userid a numero entero
+  const userId = parseInt(e.target.dataset.userid);
+  //Obtengo el userid al tocar el boton logout y así con el find cambio el estado de isloged
+  user = user.map((userItem) => {
+    return userItem.id == userId ? { ...userItem, isLoged: false } : userItem;
+  });
+  console.log(user);
   localStorage.setItem("user", JSON.stringify(user));
-  
   loginButton.style.display = "flex";
   userButton.style.display = "none";
-
 };
 
 init = () => {
@@ -163,7 +181,7 @@ init = () => {
       document.location.href = "./login/login.html";
     }, 2000);
   });
-  checkLogin();
+  // checkLogin();
   //desplegar menu cuando se inicio sesion
   userButton.addEventListener("mouseover", toggleOnHoverUser);
   userProfile.addEventListener("mouseover", toggleOnHoverUser);
@@ -171,6 +189,8 @@ init = () => {
 
   //logout
   logoutBtn.addEventListener("click", replaceNameToLogout);
+
+  document.addEventListener("DOMContentLoaded", isSomeoneLoged);
 };
 
 init();

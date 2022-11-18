@@ -9,6 +9,16 @@ const filterBtn = document.querySelector(".filter");
 const filterData = document.querySelectorAll(".filter");
 //contenedor de filtros
 const filtercontainer = document.querySelector(".filter-container");
+//next
+const pagenextBtn = document.querySelector(".pagenextBtn");
+const pageprevBtn = document.querySelector(".pageprevBtn");
+const pageControlContainer = document.querySelector(".pageControl");
+const pageNumberP = document.querySelector(".pageNumber");
+// console.log(pageNumberP.innerText);
+//Numero showing page
+const locationPageStoreNumber = document.querySelector(
+  ".locationPageStoreNumber"
+);
 //DATA API
 // GET https://api.rawg.io/api/platforms?key=YOUR_API_KEY
 // GET https://api.rawg.io/api/games?key=YOUR_API_KEY&dates=2019-09-01,2019-09-30&platforms=18,1,7
@@ -26,12 +36,6 @@ let pageSize = "&page_size=6";
 
 let pageNumber = "&page=1";
 
-//next
-const pagenextBtn = document.querySelector(".pagenextBtn");
-const pageprevBtn = document.querySelector(".pageprevBtn");
-const pageControlContainer = document.querySelector(".pageControl");
-const pageNumberP = document.querySelector(".pageNumber");
-// console.log(pageNumberP.innerText);
 //Llamado a la api
 const fetchAPI = async () => {
   try {
@@ -69,7 +73,7 @@ const renderProductStore = (game) => {
     released,
     tags,
     ratings,
-    metacritic //uso metacritic para precio porque no hay valor en la api
+    metacritic, //uso metacritic para precio porque no hay valor en la api
   } = game;
   let quantity = 1;
   // console.log(
@@ -89,7 +93,9 @@ const renderProductStore = (game) => {
                     </div>
                     <div class="rating-price">
                         <p><img src="./assets/starIcon.png" alt=""><b>Rating:</b>${rating}</p>
-                        <p><img src="./assets/priceIcon.png" alt=""><b>Price</b>${metacritic || 50}€</p>
+                        <p><img src="./assets/priceIcon.png" alt=""><b>Price</b>${
+                          metacritic || 50
+                        }€</p>
                     </div>
                     <div class="recommendedSystem">
                         <div class="dataGame">
@@ -119,7 +125,9 @@ const renderProductStore = (game) => {
                             </div>
                         </div>
                     </div>
-                    <button class="add-btn" data-id="${id}" data-name="${name}" data-price="${metacritic || 50}" data-bg="${background_image}" data-quantity="${quantity}">Add to cart</button>
+                    <button class="add-btn" data-id="${id}" data-name="${name}" data-price="${
+    metacritic || 50
+  }" data-bg="${background_image}" data-quantity="${quantity}">Add to cart</button>
                 </div>
                 </div>`;
 };
@@ -181,7 +189,8 @@ const renderFilteredProducts = (e) => {
     filter = `&genres=${filterTag}`;
     // console.log(filterTag);
   }
-  pageNumberP.innerText = 1
+  pageNumberP.innerText = 1;
+  locationPageStoreNumber.innerText= 1;
   pageprevBtn.style.display = "none";
   pagenextBtn.style.display = "block";
   filterActiveState(e);
@@ -194,6 +203,7 @@ const renderFilteredProducts = (e) => {
 // pageNumberP.innerText = 1;
 const nextPage = () => {
   pageNumberP.innerText = parseInt(pageNumberP.innerText) + 1;
+  locationPageStoreNumber.innerText = parseInt(locationPageStoreNumber.innerText) + 1;
   // console.log(pageNumberP.innerText);
   if (pageNumberP.innerText == 1) {
     pageprevBtn.style.display = "none";
@@ -211,6 +221,8 @@ const nextPage = () => {
 };
 const prevPage = () => {
   pageNumberP.innerText = parseInt(pageNumberP.innerText) - 1;
+  locationPageStoreNumber.innerText = parseInt(locationPageStoreNumber.innerText) - 1;
+
   console.log(pageNumberP.innerText);
   if (pageNumberP.innerText == 1) {
     pagenextBtn.style.display = "block";
@@ -226,7 +238,8 @@ const prevPage = () => {
 //paginacion
 const changePage = (e) => {
   // console.log(e.target.classList);
-  if ( //next page
+  if (
+    //next page
     e.target.classList.contains("fa-angle-right") ||
     e.target.classList.contains("pagenextBtn")
   ) {
@@ -234,12 +247,14 @@ const changePage = (e) => {
     nextPage();
     resetStore();
     // console.log(pageNumberP.innerText);
-  } else if ( //previous page
+  } else if (
+    //previous page
     e.target.classList.contains("fa-chevron-left") ||
     e.target.classList.contains("pageprevBtn")
   ) {
     prevPage();
     resetStore();
+    
   }
 };
 // console.log(filterBtn[0].dataset);

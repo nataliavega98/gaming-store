@@ -20,7 +20,7 @@ const saveData = () => {
       date: birthdayInput.value,
       password: passwordInput.value,
       country: countryInput.value,
-      isloged: null
+      isLoged: false
     },
   ];
   console.log(user.length)
