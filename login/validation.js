@@ -1,115 +1,43 @@
+//Traigo mi array de usuarios si es q existe
 let user = JSON.parse(localStorage.getItem("user")) || []; // obtenemos los datos del localstorage o creamos un arreglo vacio
 
-// const saveLocalStorage = () => {
-//   // funcion para guardar en el localstorage
-//   console.log("lo guarde");
-//   localStorage.setItem("saveLoginUser", JSON.stringify(saveLoginUser));
-// };
-
-// const saveLoginUser = () => {
-//   saveLoginUser = {
-//     // y agregamos el nuevo turno
-//     id: this.id,
-//     name: this.name,
-//     email: this.email,
-//     date: this.date,
-//     password: this.password,
-//     country: this.country,
-//   };
-// };
-
+//input login
 const userLoginInput = document.querySelector("#user");
+//input password
 const currentPassword = document.querySelector("#current-password");
+//input form
 const form = document.querySelector("form");
+//small text error
 const showPassword = document.querySelector("#show-password");
+//contenedor de password
 const passContainer = document.querySelector(".passwordContainer");
 
+//¿El usuario existe? ¿Coincide contraseña con su usuario(email)?
 const checkUserExist = (inputvalue) => {
-  // const [{ name, email }] = user;
-  let valid = true;
-  // console.log(user);
-  // console.log(name);
+  let valid = false;
+  //input q ingresa (email), su value sin espacios
   const input = inputvalue.value.trim();
-  // console.log(input);
+  //si esta vacio devolver error
   if (!input.length) {
-    showError(inputvalue, "Please enter your email adress.");
+    showError("Please enter your email adress.");
+  } else if (isUserExisting(input) == undefined) {
+    showError("Please, enter with your email adress or create an account.");
   } else if (!isUserExisting(input)) {
-    showError(inputvalue, "Incorrect email adress or password");
+    //Si devuelve false porque no hay algo q coincida, lo paso a true para mostrar el error
+    console.log(!isUserExisting(input));
+    showError("Incorrect email adress or password");
   } else {
-    showError(inputvalue, "coincide");
     valid = true;
   }
-  
+  console.log(valid);
   return valid;
 };
 
-// const checkPasswordGood = (inputvalue, inputError) => {
-//   // const [{ name, password }] = user;
-//   let valid = true;
-//   // console.log(user);
-//   // console.log(name);
-//   const input = inputvalue.value.trim();
-//   // console.log(input);
-//   if (!input.length) {
-//     showError(inputError, "Please enter your email adress.");
-//   } else if (findUserPassword() == input) {
-//     showError(inputError, "Incorrect email adress or password");
-//   } else {
-//     showError(inputError, "coincide");
-//     valid = true;
-//   }
-
-//   return valid;
-// };
-
-const showError = (input, message) => {
-  const smallText = input.parentElement;
-  // console.log(smallText);
-  const error = smallText.querySelector(".showmessage");
+const showError = (message) => {
+  const error = document.querySelector(".showmessage");
   error.textContent = message;
 };
-// const replaceNameToLogin = () => {
-//   const [{ name }] = name;
 
-//   loginButton.style.display = "none";
-//   userButton.style.display = "flex";
-//   userNW.innerHTML = `${name}`;
-// };
-// const replaceNameToLogout = () => {
-//   const lastIndexOfArrayUser = user.length - 1;
-//   const name = user[lastIndexOfArrayUser].name;
-
-//   loginButton.style.display = "flex";
-//   userButton.style.display = "none";
-//   userNW.innerHTML = `${name}`;
-// };
-
-const submitForm = (e) => {
-  e.preventDefault();
-
-  const isValidForm = () => {
-    // funcion para validar el formulario
-    const isValidEmail = checkUserExist(userLoginInput); // validamos el email
-    // const isValidPassword = checkPasswordGood(currentPassword, passContainer); // validamos el telefono
-    return isValidEmail;
-    // && isValidPassword;
-  };
-  // console.log(isValidForm());
-  if (isValidForm()) {
-    //Si el formulario es valido, verifico si existe en el sistema
-    // if (isUserExisting(userLoginInput.value.trim())) {
-    //   console.log(existingUserList)
-    //   window.location.href = "../index.html";
-    // }
-    if (isUserExisting(userLoginInput.value.trim())) {
-      
-    }
-    // let loginData = user
-    // loginData[0].isloged = true;
-    // localStorage.setItem("user", JSON.stringify(user));
-    // if(user.isloged = true) {window.location.href = "../index.html"};
-  }
-};
 // toggle contraseña y repeat contraseña
 showPassword.addEventListener("click", () => {
   // console.log("funciono");
@@ -123,19 +51,25 @@ showPassword.addEventListener("click", () => {
 //Veo si en mi array de objetos coincide el usuario con alguno ya cargado
 const isUserExisting = (emailuser) => {
   //Me trago el usuario que ingresó
+  let valid = false;
   const existingUserList = user.find((email) => email.email === emailuser);
   if (existingUserList == undefined) {
-    console.log("no anda");
-    ;
-  } else if (existingUserList.email == userLoginInput.value.trim() && existingUserList.password == currentPassword.value.trim()) {
-    console.log("Contraseñas coinciden");
-    isLogedTrue(existingUserList)
-
+    return;
+  } else if (
+    //comparacion de input.value con los datos de usuario
+    existingUserList.email == userLoginInput.value.trim() &&
+    existingUserList.password == currentPassword.value.trim()
+  ) {
+    // console.log("Contraseñas coinciden");
+    //Si ambos son correctos y coinciden que cambie la condicion de logued a true
+    isLogedTrue(existingUserList);
+    valid = true;
   }
-  return existingUserList
+  return valid;
 };
 
 const isLogedTrue = (userFinded) => {
+  let valid = false;
   //El usuario logueado con contraseña y email q coinciden le activo su logueo a true
   user = user.map((userItem) => {
     return userItem.id === userFinded.id
@@ -143,10 +77,21 @@ const isLogedTrue = (userFinded) => {
       : userItem;
   });
   localStorage.setItem("user", JSON.stringify(user));
-  //Si se logró loguear, que redireccione al store
-  if(userFinded.isloged = true) {window.location.href = "../index.html"};
+  // Si se logró loguear, que redireccione al store
+  if ((userFinded.isloged = true)) {
+    valid = true;
+  }
+  return valid;
 };
 
+const submitForm = (e) => {
+  e.preventDefault();
+  //Si la validacion del usuario da true redireccionar
+  if (checkUserExist(userLoginInput)) {
+    console.log(checkUserExist(userLoginInput));
+    window.location.href = "../index.html";
+  }
+};
 const initValidateLogin = () => {
   form.addEventListener("submit", submitForm);
 };

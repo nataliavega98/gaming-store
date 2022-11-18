@@ -125,7 +125,8 @@ const closeOnOverlayClick = () => {
 const isSomeoneLoged = () => {
   //Me trago el usuario que tiene loged true
   const userloged = user.find((loged) => loged.isLoged == true);
-  //Si no encuentra true que
+  //Si no encuentra true que que devuelva !userloged para que n tire undefined (devuelve true),
+  //Cuando si encuentre true userloged devolverá false y pasará al else if
   console.log(!userloged)
   if (!userloged) {
     return;

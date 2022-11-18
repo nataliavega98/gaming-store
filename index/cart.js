@@ -54,7 +54,6 @@ const renderCart = () => {
   }
   cartProductContainer.innerHTML = cart.map(renderCartProduct).join("");
   showTotal();
-  
 };
 const createCartProduct = (product) => {
   //spread, quiero una copia del carrito q ya tengo, le agrego el producto
@@ -79,9 +78,9 @@ const addProduct = (e) => {
     addUnitToProduct(productData);
     showSuccessModal(`A ${productData.name} unit has been added to your cart`);
   } else {
-  createCartProduct(productData);
+    createCartProduct(productData);
 
-  showSuccessModal(`${productData.name} has been added to the cart.`);
+    showSuccessModal(`${productData.name} has been added to the cart.`);
   }
 
   checkCartState();
@@ -116,16 +115,17 @@ const completeCartAction = (confirmMsg, successMsg) => {
   if (!cart.length) return;
   if (window.confirm(confirmMsg)) {
     resetCartItem();
-    alert(successMsg)
-    ;
+    alert(successMsg);
   }
 };
 
 //borrar carrito
 const deleteCart = () => {
-  completeCartAction(
-    "Do you want to empty the cart?"
-  );
+  if (window.confirm("Do you want to empty your cart?😥")) {
+    resetCartItem();
+  }
+
+  return;
 };
 
 //Deshabilitar boton
@@ -188,10 +188,12 @@ const handleQuantity = (e) => {
   checkCartState();
 };
 
-
 //Función para completar compra.
 const completeBuy = () => {
-  completeCartAction("Do you want to finish your purchase?😊", "Thanks for your purchase!🎊");
+  completeCartAction(
+    "Do you want to finish your purchase?😊",
+    "Thanks for your purchase!🎊"
+  );
 };
 
 const checkCartState = () => {
@@ -209,8 +211,6 @@ const initCart = () => {
   disableBtn(buyBtn);
   cartProductContainer.addEventListener("click", handleQuantity);
   buyBtn.addEventListener("click", completeBuy);
-
-
 };
 
 initCart();

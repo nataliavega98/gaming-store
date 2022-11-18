@@ -116,6 +116,9 @@ form {
 }
 form div {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 form input {
   width: 100%;
@@ -245,4 +248,25 @@ i#show-password {
   right: 16px;
   top: 12px;
   cursor: pointer;
+}
+.showmessage {
+  color: #ff5170;
+  font-family:'Roboto', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  height: 16px;
+}
+
+
+@media (max-width: 780px) {
+  .nameBackgroundGame h3{
+    width: 100%;
+  }
+  .nameBackgroundGame {
+    height: 5%;
+  }
+  .login-data-container {
+    width: 100%;
+    height: 95%;
+  }
 }

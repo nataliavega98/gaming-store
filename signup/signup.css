@@ -120,7 +120,9 @@ form div {
   /* width: 100%; */
   flex: 0 0 250px;
 }
-form input, select, select > option {
+form input,
+select,
+select > option {
   width: 100%;
   background: #ffffff80;
 
@@ -164,9 +166,7 @@ select:focus {
   width: 100%;
   color: black;
   cursor: pointer;
-
 }
-
 
 .form-login-button {
   width: 100%;
@@ -256,10 +256,12 @@ select:focus {
   border-bottom: 1px solid #b535f6;
 }
 
-
 .showMessage {
-  color: red;
+  color: #ff5170;
   font-family:'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 16px;
 }
 
 form div {
@@ -275,9 +277,44 @@ form div {
   flex: 0 0 auto;
 }
 
-#passwordInput i{
+#passwordInput i {
   position: absolute;
   right: 16px;
   top: 16px;
   cursor: pointer;
+}
+
+@media (max-width: 780px) {
+  .nameBackgroundGame h3 {
+    width: 100%;
+  }
+  .nameBackgroundGame {
+    height: 5%;
+  }
+  .login-data-container {
+    width: 100%;
+    height: 95%;
+  }
+}
+@media (max-width: 570px) {
+  form div {
+    width: 100%;
+    flex: 0 0 64px;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    width: 100%;
+    /* flex-wrap: wrap; */
+    /* flex-flow: row wrap; */
+  }
+  .form-container {
+    width: 275px;
+    gap: 16px;
+  }
+  .login-data-container {
+    gap: 24px;
+  }
 }

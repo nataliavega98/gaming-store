@@ -58,13 +58,13 @@
   }
   .menu-container li:last-child {
     display: block;
-    background-color: white;
+    /* background-color: white;
     border-radius: 4px;
     color: black;
     font-weight: 700;
     text-align: center;
     /* justify-self: center; */
-    padding: 8px;
+    /* padding: 8px; */ */
 }
   .game-info {
     gap: 24px;
@@ -74,7 +74,7 @@
     display: none;
   }
   .gaming-logo {
-    background-image: url(../assets/logoPage.png);
+    background-image: url(../assets/logoPage.svg);
     background-repeat: no-repeat;
     background-position: center;
     object-fit: cover;
