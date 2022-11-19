@@ -7,7 +7,11 @@ const saveLocalStorage = (cartList) => {
 };
 
 //VARIABLES
+// contenedor de productos del carrito
 const cartProductContainer = document.querySelector(".cart-products-container");
+//Contanedor de productos del banner
+const gameInfoContainer = document.querySelector(".game-info")
+//contenedor de productos del store
 const productsBtn = document.querySelector(".cardsGame-container");
 //El div en el q se renderizara el success
 const successModal = document.querySelector(".add-modal");
@@ -18,11 +22,8 @@ const emptyBtn = document.querySelector(".empty-btn");
 //boton de comprar
 const buyBtn = document.querySelector(".buy-btn");
 
-// console.log(productsBtn);
-// Renderizado de un producto del carrito.
-
+// html de un producto del carrito.
 const renderCartProduct = (game) => {
-  console.log(game);
   const { id, name, bg, price, quantity } = game;
   return `    
         <div class="products-container" id=${id}>
@@ -46,45 +47,51 @@ const renderCartProduct = (game) => {
 };
 
 //Función para renderizar el carrito
-console.log(cartProductContainer);
 const renderCart = () => {
+  // si esta vacio
   if (!cart.length) {
     cartProductContainer.innerHTML = `<p class="empty-msg">You have not added any game to the cart.</p><p>Go and choose one!</p>`;
     return;
   }
+  //renderizar y añadir al html del contenedor de productos
   cartProductContainer.innerHTML = cart.map(renderCartProduct).join("");
+  //mostrar precio total
   showTotal();
 };
+
+
 const createCartProduct = (product) => {
   //spread, quiero una copia del carrito q ya tengo, le agrego el producto
   cart = [...cart, { ...product, quantity: 1 }];
-  console.log(cart);
 };
+
 //Mensaje de que se agrego un producto al carrito
 const showSuccessModal = (msg) => {
   successModal.classList.add("active-modal");
   successModal.textContent = msg;
-
   setTimeout(() => successModal.classList.remove("active-modal"), 3500);
 };
-//Funcion para agregar al carrito un producto
-const addProduct = (e) => {
-  if (!e.target.classList.contains("add-btn")) return;
-  const { id, name, bg, price, quantity } = e.target.dataset;
 
+//Funcion para agregar al carrito un producto al hacer click
+const addProduct = (e) => {
+  //devolver aquellos q no tengan add-btn
+  if (!e.target.classList.contains("add-btn")) return;
+  // desestructurar data que viene por el boton
+  const { id, name, bg, price, quantity } = e.target.dataset;
   const productData = { id, name, bg, price, quantity };
-  console.log(productData);
+
+  //si ya existe agrego uno más
   if (isExistingCartProduct(productData)) {
     addUnitToProduct(productData);
     showSuccessModal(`A ${productData.name} unit has been added to your cart`);
-  } else {
+  } else { //agrego el nuevo producto
     createCartProduct(productData);
-
     showSuccessModal(`${productData.name} has been added to the cart.`);
   }
-
+  //chequeo el estado del carrito
   checkCartState();
 };
+
 //Función para obtener el precio total de compra
 const getCartTotal = () =>
   cart.reduce((acc, cur) => acc + Number(cur.price) * cur.quantity, 0);
@@ -93,10 +100,12 @@ const getCartTotal = () =>
 const showTotal = () => {
   total.innerHTML = `${getCartTotal().toFixed(2)}€`;
 };
+
 //el producto si ya existe
 const isExistingCartProduct = (product) => {
   return cart.find((item) => item.id === product.id);
 };
+
 //le sumo una unidad mas si existe
 const addUnitToProduct = (product) => {
   cart = cart.map((cartProduct) =>
@@ -105,12 +114,14 @@ const addUnitToProduct = (product) => {
       : cartProduct
   );
 };
-//borrar
+
+//resetear todo el carrito
 const resetCartItem = () => {
   cart = [];
   checkCartState();
 };
-//alertas de carrito
+
+//Funcion para alertas de carrito
 const completeCartAction = (confirmMsg, successMsg) => {
   if (!cart.length) return;
   if (window.confirm(confirmMsg)) {
@@ -119,7 +130,7 @@ const completeCartAction = (confirmMsg, successMsg) => {
   }
 };
 
-//borrar carrito
+//Funcion para accionar borrar carrito
 const deleteCart = () => {
   if (window.confirm("Do you want to empty your cart?😥")) {
     resetCartItem();
@@ -138,33 +149,17 @@ const disableBtn = (btn) => {
 };
 
 //Función para manipular el evento de apretar en el más.
-// Recibe el id.
-// Guardamos en una constante el producto que queremos manipular.
-// Le agregamos una unidad con la función addUnitToProduct.
 const handlePlusBtnEvent = (id) => {
   const existingCartProduct = cart.find((item) => item.id === id);
   addUnitToProduct(existingCartProduct);
 };
+
+// remover item segun id
 const removeProductFromCart = (existingCartProduct) => {
   cart = cart.filter((product) => product.id !== existingCartProduct.id);
   checkCartState();
 };
-
-const handleMinusBtnEvent = (id) => {
-  const existingCartProduct = cart.find((item) => item.id === id);
-
-  // Si se toco en un item con uno solo de cantidad
-  if (existingCartProduct.quantity === 1) {
-    if (window.confirm("Do you want to empty your cart?😥")) {
-      removeProductFromCart(existingCartProduct);
-    }
-
-    return;
-  }
-  substractProductUnit(existingCartProduct);
-};
-
-//Función para restarle una unidad a un producto del carrito.
+//Función para restarle una unidad a un producto del carrito (quantity-1).
 // Hacemos un map que recorre el carrito y si el id del producto coincide con el id del producto que queremos restarle una unidad, le restamos una unidad.
 const substractProductUnit = (existingProduct) => {
   cart = cart.map((product) => {
@@ -173,18 +168,33 @@ const substractProductUnit = (existingProduct) => {
       : product;
   });
 };
+
+//Función para manipular el evento de apretar en el menos.
+const handleMinusBtnEvent = (id) => {
+  const existingCartProduct = cart.find((item) => item.id === id);
+
+  // Si se toco en un item con uno solo de cantidad preguntar y eliminar
+  if (existingCartProduct.quantity === 1) {
+    if (window.confirm(`Do you want to delete ${existingCartProduct.name}from your cart?😥`)) {
+      removeProductFromCart(existingCartProduct);
+    }
+    return;
+  }
+  //eliminar de a 1 item
+  substractProductUnit(existingCartProduct);
+};
+
+
 //Función para manipular los eventos de los botones de más y menos.
-// Recibe el evento.
-// Si el target es el botón de menos, disparamos la función handleMinusBtnEvent con el id del producto.
-// Si el target es el botón de más, disparamos la función handlePlusBtnEvent con el id del producto.
-// Para todos los casos, guardamos el carrito en el localStorage, renderizamos el carrito, mostramos el total y manipulamos el boton de compra.
 const handleQuantity = (e) => {
+  //accion restar
   if (e.target.classList.contains("substract-product")) {
     handleMinusBtnEvent(e.target.dataset.id);
-  } else if (e.target.classList.contains("addplus-product")) {
+  } //accion sumar  
+  else if (e.target.classList.contains("addplus-product")) {
     handlePlusBtnEvent(e.target.dataset.id);
   }
-  // Para todos los casos
+  // Actualizamos el estado del carrito
   checkCartState();
 };
 
@@ -196,15 +206,21 @@ const completeBuy = () => {
   );
 };
 
+//Funcion que actualiza el carrito, guarda en local storage, renderiza lo que haya en el array cart
+//muestra el total, desabilita los botones al estar vacio el cart
 const checkCartState = () => {
   saveLocalStorage(cart);
   renderCart(cart);
   showTotal(cart);
   disableBtn(emptyBtn);
   disableBtn(buyBtn);
+
 };
+
+
 const initCart = () => {
   productsBtn.addEventListener("click", addProduct);
+  gameInfoContainer.addEventListener("click", addProduct);
   document.addEventListener("DOMContentLoaded", renderCart);
   emptyBtn.addEventListener("click", deleteCart);
   disableBtn(emptyBtn);

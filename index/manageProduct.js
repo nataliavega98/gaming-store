@@ -11,18 +11,22 @@ const filterData = document.querySelectorAll(".filter");
 const filtercontainer = document.querySelector(".filter-container");
 //next
 const pagenextBtn = document.querySelector(".pagenextBtn");
+//previous
 const pageprevBtn = document.querySelector(".pageprevBtn");
+//contenedor de botones de paginacion
 const pageControlContainer = document.querySelector(".pageControl");
+//numero indicador de la pagina actual
 const pageNumberP = document.querySelector(".pageNumber");
-// console.log(pageNumberP.innerText);
-//Numero showing page
+//Numero showing page of 6
 const locationPageStoreNumber = document.querySelector(
   ".locationPageStoreNumber"
 );
+
 //DATA API
 // GET https://api.rawg.io/api/platforms?key=YOUR_API_KEY
 // GET https://api.rawg.io/api/games?key=YOUR_API_KEY&dates=2019-09-01,2019-09-30&platforms=18,1,7
 
+//VARIABLES DE API - modificables para sus filtros y paginado
 //url de la API
 const baseURL = "https://api.rawg.io/api/";
 //page locaton
@@ -38,6 +42,8 @@ let pageNumber = "&page=1";
 
 //Llamado a la api
 const fetchAPI = async () => {
+  //cada vez que se llama a la api se ejecuta el loader
+  renderLoader();
   try {
     const response = await fetch(
       baseURL + pageLocation + apiKey + pageSize + pageNumber + filter
@@ -45,13 +51,42 @@ const fetchAPI = async () => {
     //Filtro todos los juegos primero, el filtro será redefinido segun la categoria
     const data = await response.json();
     const results = data.results;
-    // console.log(results);
-    console.log(data);
-
+    //saco el loader
+    cleanRenderLoader();
+    //renderizo el resultado
     renderProductRequested(results);
   } catch (err) {
     console.log(err);
   }
+};
+
+//loader de productos
+const renderLoader = () => {
+  const cardLoad = `<div class="cardGameLoading";">
+  <div class="cardGameInfoLoading">
+      <i class="fa-solid fa-chevron-up"></i>
+      <div class="background-blurLoading">
+          <h4 class="shinny"></h4>
+          <div class="genresLoading">
+              <p class="shinny"></p><p class="shinny"></p><p class="shinny"></p>
+          </div>
+          <div class="rating-priceLoading">
+              <p class="shinny"></p>
+              <p class="shinny"> </p>
+          </div>                        
+      </div>
+      <button class="add-btnLoading shinny"></button>
+  </div>
+</div>`;
+  let times = 6; //quiero q se rendericen 6
+
+  for (let i = 0; i < times; i++) {
+    cardsGameContainer.innerHTML += cardLoad;
+  }
+};
+
+const cleanRenderLoader = () => {
+  cardsGameContainer.innerHTML = ``;
 };
 
 //como no tiene precio la API genero un numero random
@@ -59,10 +94,8 @@ function getRandomPrice() {
   return Math.floor(Math.random() * (100 - 1 + 1) + 1);
 }
 
-// render produtcs en el contenedor del store
-
+// Render produtcs en el contenedor del store
 const renderProductStore = (game) => {
-  // console.log(game);
   const {
     id,
     name,
@@ -75,16 +108,9 @@ const renderProductStore = (game) => {
     ratings,
     metacritic, //uso metacritic para precio porque no hay valor en la api
   } = game;
+  // Defino la cantidad en 1 ya que la api no tiene este valor
   let quantity = 1;
-  // console.log(
-  //   `${id}-${name}-${background_image}-${genresRender(
-  //     genres
-  //   )}-${rating}-${released}-${playtime}-${genresRender(tags)}-${
-  //     ratings[0].title
-  //   }: ${ratings[0].percent}`
-  // );
-  //   console.log(genres);
-  //   console.log(genresRender(genres));
+
   return `
                 <div class="cardGame" id="${id}" style="background-image: url('${background_image}');">
                 <div class="cardGameInfo onHover">
@@ -97,7 +123,7 @@ const renderProductStore = (game) => {
                         <div class="rating-price">
                             <p><img src="./assets/starIcon.png" alt=""><b>Rating:</b>${rating}</p>
                             <p><img src="./assets/priceIcon.png" alt=""><b>Price</b>${
-                            metacritic || 50
+                              metacritic || 50
                             }€</p>
                         </div>
                         <div class="recommendedSystem">
@@ -114,39 +140,40 @@ const renderProductStore = (game) => {
                                 <p>User Ratings</p>
                                 <div class="allrates">
                                     <p><i class="fa-solid fa-face-grin-stars"></i> ${
-                                    ratings[0].title
+                                      ratings[0].title
                                     }: ${ratings[0].percent}%</p>
                                     <p><i class="fa-solid fa-face-smile"></i> ${
-                                    ratings[1].title
+                                      ratings[1].title
                                     }: ${ratings[1].percent}%</p>
                                     <p><i class="fa-solid fa-face-meh"></i> ${
-                                    ratings[2].title
+                                      ratings[2].title
                                     }: ${ratings[2].percent}%</p>
                                     <p><i class="fa-solid fa-face-frown"></i> ${
-                                    ratings[3].title
+                                      ratings[3].title
                                     }: ${ratings[3].percent}%</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <button class="add-btn" data-id="${id}" data-name="${name}" data-price="${metacritic || 50}" data-bg="${background_image}" data-quantity="${quantity}">Add to cart</button>
+                    <button class="add-btn" data-id="${id}" data-name="${name}" data-price="${
+    metacritic || 50
+  }" data-bg="${background_image}" data-quantity="${quantity}">Add to cart</button>
                 </div>
               </div>
   `;
 };
+
+// Funcion que buscca dentro del parametro (results), ejecuta el render y luego lo agrega al html del contenedor store
 const renderProductRequested = (productsList) => {
-  // console.log(productsList)
   const cards = productsList
     .map((game) => {
       return renderProductStore(game);
     })
     .join("");
-  // console.log((cardsGameContainer.innerHTML += cards));
   cardsGameContainer.innerHTML += cards;
 };
 
-// const genres = ["hola", "chau"];
-//desglozar generos, como maximo mostrar solo 4
+//desglozar generos de la api, como maximo mostrar solo 3
 const genresRender = (genre) => {
   const chipGenre = genre.map((elemento) => `<p>${elemento.name}</p>`);
   chipGenre.length = 3;
@@ -155,14 +182,13 @@ const genresRender = (genre) => {
 
 //LOGICA DE FILTROS
 
+//Limpio el contenedor de productos
 const cleanRender = () => {
   cardsGameContainer.innerHTML = "";
 };
 
+//Funcion para mostrar activo el filtro
 const filterActiveState = (e) => {
-  // console.log(e);
-  // console.log(e.target.classList);
-  // console.log(filterData);
   const filterTag = e.target.classList;
   filterData.forEach((filterData) => {
     if (filterData.classList.contains("active")) {
@@ -173,41 +199,42 @@ const filterActiveState = (e) => {
   filterTag.add("active");
 };
 
+//Funcion que limpia y renderiza lo nuevo
 const resetStore = () => {
   cleanRender();
   fetchAPI();
 };
 
+//Logica de filtro, segun el data-filter del filtro seleccionado se cambia la variable filter del fetch de la api
 const renderFilteredProducts = (e) => {
-  // console.log(e.target.dataset.filter);
   //vuelvo a ponerlo en pagina 1
   const filterTag = e.target.dataset.filter;
-  if (filterTag == "allgames") {
+  if (filterTag == undefined) {
+    //Si es undefined no devolver, ni alterar nada
+    return;
+  } else if (filterTag == "allgames") {
+    //filter vacio para all games
     filter = ``;
-  } else if (filterTag == "top2022") {
-    // console.log("entre");
-    gameLocation = "games/lists/greatest?";
-    filter = `&ordering=-rating`;
   } else {
+    //aplicar filtro según el data-filter
     filter = `&genres=${filterTag}`;
-    // console.log(filterTag);
   }
+  //setear en 1 la página, en base a este se hace la paginacion
   pageNumberP.innerText = 1;
-  locationPageStoreNumber.innerText= 1;
+  locationPageStoreNumber.innerText = 1;
   pageprevBtn.style.display = "none";
   pagenextBtn.style.display = "block";
   filterActiveState(e);
   resetStore();
-  // products.innerHTML = productsList.map(renderProduct).join("");
-  // console.log(baseURL + "games?" + apiKey + filter);
 };
 
-//cada vez q haga click sume 1
-// pageNumberP.innerText = 1;
+//Función paginado next
 const nextPage = () => {
+  //sumo 1
   pageNumberP.innerText = parseInt(pageNumberP.innerText) + 1;
-  locationPageStoreNumber.innerText = parseInt(locationPageStoreNumber.innerText) + 1;
-  // console.log(pageNumberP.innerText);
+  locationPageStoreNumber.innerText =
+    parseInt(locationPageStoreNumber.innerText) + 1;
+  // la variable pagenumber del llamado a la api cambia según el numero mostrado
   if (pageNumberP.innerText == 1) {
     pageprevBtn.style.display = "none";
     pageNumber = `&page=${(pageNumberP.innerText = 1)}`;
@@ -218,38 +245,36 @@ const nextPage = () => {
     pageNumber = `&page=${(pageNumberP.innerText = 6)}`;
   } else {
     pageprevBtn.style.display = "block";
-    // console.log(pageNumberP.innerText);
     pageNumber = `&page=${pageNumberP.innerText}`;
   }
 };
-const prevPage = () => {
-  pageNumberP.innerText = parseInt(pageNumberP.innerText) - 1;
-  locationPageStoreNumber.innerText = parseInt(locationPageStoreNumber.innerText) - 1;
 
-  console.log(pageNumberP.innerText);
+//Funcion paginado prev
+const prevPage = () => {
+  //resto 1
+  pageNumberP.innerText = parseInt(pageNumberP.innerText) - 1;
+  locationPageStoreNumber.innerText =
+    parseInt(locationPageStoreNumber.innerText) - 1;
+  // la variable pagenumber del llamado a la api cambia según el numero mostrado
   if (pageNumberP.innerText == 1) {
     pagenextBtn.style.display = "block";
     pageprevBtn.style.display = "none";
     pageNumber = `&page=${(pageNumberP.innerText = 1)}`;
   } else {
     pageprevBtn.style.display = "block";
-    // console.log(pageNumberP.innerText);
     pageNumber = `&page=${pageNumberP.innerText}`;
   }
 };
 
-//paginacion
+//Funcion de paginación que realiza el cambio
 const changePage = (e) => {
-  // console.log(e.target.classList);
   if (
     //next page
     e.target.classList.contains("fa-angle-right") ||
     e.target.classList.contains("pagenextBtn")
   ) {
-    // console.log(pageNumberP.innerText);
     nextPage();
     resetStore();
-    // console.log(pageNumberP.innerText);
   } else if (
     //previous page
     e.target.classList.contains("fa-chevron-left") ||
@@ -257,10 +282,9 @@ const changePage = (e) => {
   ) {
     prevPage();
     resetStore();
-    
   }
 };
-// console.log(filterBtn[0].dataset);
+
 const initManageProduct = () => {
   fetchAPI();
   filtercontainer.addEventListener("click", renderFilteredProducts);

@@ -1,3 +1,4 @@
+//Traigo el array user
 let user = JSON.parse(localStorage.getItem("user")) || []; // obtenemos los datos del localstorage o creamos un arreglo vacio
 
 // contenedor game info del banner
@@ -30,28 +31,37 @@ const volumeBtn = document.querySelector(".volume");
 //video
 const videoBanner = document.querySelector("video");
 
+//Menu list - menu desplegable derecha
+const secondMl = document.querySelector(".second-ml");
+
+//contenedor de usuario logueado
+const userButton = document.querySelector(".userButton");
+
+// contenedor de nombre usuario
+const userProfile = document.querySelector(".userprofile");
+
+// nombre usuario
+const userNW = document.querySelector(".user-name-welcome");
+
+// nombre usuario para mobile
+const userNWMobile = document.querySelector(".user-name-welcome-mobile");
+
+// boton logout
+const logoutBtn = document.querySelector(".logoutBtn");
+
 //boton login desktop
 const loginButton = document.querySelector(".loginButton");
 
-//boton logout mobile
+//boton logint mobile
 const loginButtonMobile = document.querySelector(".loginButtonMobile");
-//boton login mobile
+
+//boton logoun mobile
 const logoutButtonMobile = document.querySelector(".logoutButtonMobile");
 
-//second menu list
-const secondMl = document.querySelector(".second-ml");
-const userButton = document.querySelector(".userButton");
-const userProfile = document.querySelector(".userprofile");
-const userNW = document.querySelector(".user-name-welcome");
-const userNWMobile = document.querySelector(".user-name-welcome-mobile");
-const logoutBtn = document.querySelector(".logoutBtn");
-// NAV BAR FIXED CHANGE COLOR ON SCROLL
 // Medidas de hero y de todo el documento
-// console.log(heroSection.scrollHeight);
-// console.log(document.body.scrollHeight - heroSection.scrollHeight);
-
 const heightGameBanner = gameBannerSection.scrollHeight;
 
+// NAV BAR FIXED CHANGE COLOR ON SCROLL
 const navbar = document.querySelector(".nav-fixed");
 window.onscroll = () => {
   if (window.scrollY > heightGameBanner) {
@@ -62,8 +72,9 @@ window.onscroll = () => {
   }
 };
 
-//mute video
+// Volumen de video arranca en 0
 videoBanner.volume = 0;
+//Funcion para mutear video
 const unmuteVideo = () => {
   if (volumeBtn.classList.contains("fa-volume-xmark")) {
     volumeBtn.classList.remove("fa-volume-xmark");
@@ -106,35 +117,30 @@ const toggleMenu = () => {
 
   overlayMenu.classList.toggle("show-overlay");
 };
+
+//Abrir menu de usuario on hover
 const toggleOnHoverUser = () => {
   userProfile.classList.add("open-user");
 };
+
+// Cerrar menu usaurio al sacar el mouse
 const mouseLeftHoverUser = () => {
   userProfile.classList.remove("open-user");
 };
 
-//
+//Cerrar menu al ahcer click afuera (overlay)
 const closeOnOverlayClick = () => {
   menuContainer.classList.remove("open-menu");
   cartContainer.classList.remove("open");
   overlayMenu.classList.remove("show-overlay");
 };
 
-// const replaceNameToLogin = () => {
-//   const lastIndexOfArrayUser = user.length - 1;
-//   const name = user[lastIndexOfArrayUser].name;
-
-//   loginButton.style.display = "none";
-//   userButton.style.display = "flex";
-//   userNW.innerHTML = `${name}`;
-// };
-
+//Función para saber si alguien esta logueado y realizar los debidos cambios
 const isSomeoneLoged = () => {
   //Me trago el usuario que tiene loged true
   const userloged = user.find((loged) => loged.isLoged == true);
   //Si no encuentra true que que devuelva !userloged para que n tire undefined (devuelve true),
   //Cuando si encuentre true userloged devolverá false y pasará al else if
-  console.log(userloged);
   if (!userloged) {
     return;
   } else if (userloged.isLoged == true) {
@@ -147,38 +153,39 @@ const isSomeoneLoged = () => {
     styleUserIfMediaQuery();
   }
 };
+
+//Estilado si el usuario esta logueado según el tamaño del dispositivo (mayor o menor a 730px width)
 const styleUserLoged = () => {
   if (window.innerWidth < 730) {
     userButton.style.display = "none";
     loginButtonMobile.style.display = "none";
     userNWMobile.style.display = "flex";
-    logoutButtonMobile.style.display="block"
+    logoutButtonMobile.style.display = "block";
   } else {
     loginButton.style.display = "none";
     userButton.style.display = "flex";
     loginButtonMobile.style.display = "none";
-    logoutButtonMobile.style.display="none"
-
+    logoutButtonMobile.style.display = "none";
   }
 };
+
+//Estilado si el usuario cierra sesion según el tamaño del dispositivo (mayor o menor a 730px width)
 const styleUserLogout = () => {
-  console.log("EStilado logout");
   if (window.innerWidth < 730) {
     loginButtonMobile.style.display = "block";
     loginButton.style.display = "none";
-    logoutButtonMobile.style.display="none"
+    logoutButtonMobile.style.display = "none";
     userNWMobile.style.display = "none";
-
   } else {
     loginButton.style.display = "flex";
     userButton.style.display = "none";
-    
+
     loginButtonMobile.style.display = "none";
     userNWMobile.style.display = "none";
-
   }
 };
-//Funcion de estilado según el tamaño del dispositivo
+
+//Funcion que ejecuta el estilado según el tamaño del dispositivo
 const styleUserIfMediaQuery = () => {
   const userloged = user.find((loged) => loged.isLoged == true);
 
@@ -188,25 +195,10 @@ const styleUserIfMediaQuery = () => {
     styleUserLogout();
   }
 };
-// Attach listener function on state changes
-// const checkLogin = () => {
-//   const [{ name, isloged }] = user;
-//   if (isloged) {
-//     // console.log("Si está logueado");
-//     // console.log(name);
-//     loginButton.style.display = "none";
-//     userButton.style.display = "flex";
-//     userNW.innerHTML = `${name}`;
-//   } else {
-//     return
-//   }
-// };
 
+//Funcion que desloguea al usuario (isloged: false) y que
 const replaceNameToLogout = (e) => {
-  // const lastIndexOfArrayUser = user.length - 1;
-  // const name = user[lastIndexOfArrayUser].name;
   //Paso mi string del boton dataset-userid a numero entero
-  console.log("Deslogueado");
   const userId = parseInt(e.target.dataset.userid);
   //Obtengo el userid al tocar el boton logout y así con el find cambio el estado de isloged
   user = user.map((userItem) => {
@@ -236,20 +228,20 @@ init = () => {
       document.location.href = "./login/login.html";
     }, 2000);
   });
-  // checkLogin();
+
   //desplegar menu cuando se inicio sesion
   userButton.addEventListener("mouseover", toggleOnHoverUser);
   userProfile.addEventListener("mouseover", toggleOnHoverUser);
   userButton.addEventListener("mouseleave", mouseLeftHoverUser);
 
-  // //logout
+  //logout
   logoutBtn.addEventListener("click", replaceNameToLogout);
-  // //logout
   logoutButtonMobile.addEventListener("click", replaceNameToLogout);
 
+  //Fijarse si alguien esta logueado desde un principio
   document.addEventListener("DOMContentLoaded", isSomeoneLoged);
 
-  //Verificador constante de tamaño de pantalla
+  //Verificador constante de tamaño de pantalla para el estilado de login
   window.addEventListener("resize", isSomeoneLoged);
 };
 

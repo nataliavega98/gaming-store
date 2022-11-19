@@ -25,21 +25,28 @@
         <nav class="navigationBar">
             <i class="fa-solid fa-bars menu"></i>
             
+            <!-- opciones menu izquierda -->
             <ul class="menuoption-list menu-container">
+
                 <i class="fa-solid fa-xmark close-menu"></i>
 
                 <li class="option"><a href="#hero-section">Home</a></li>
                 <li class="option"><a href="#htb-section">How to buy</a></li>
                 <li class="option"><a href="#store-section">Store</a></li>
+                <!-- opciones menu desplegable mobile -->
                 <p class="user-name-welcome-mobile"></p>
                 <li class="loginButtonMobile" >Login</li>
                 <li class="logoutButtonMobile" >Log out</li>
-
             </ul>
+            <!-- Logo header -->
             <a href="#hero-section" class="gaming-logo"><img src="./assets/gamingstore-logo.svg" alt=""></a>
+
+             <!-- opciones menu derecha -->
             <ul class="menuoption-list second-ml">
                 <li class="iconOption cartButton"><img src="./assets/cartIcon.png" alt="Cart logo, Shop"><p>Cart</p> </li>
                 <li class="iconOption loginButton"><img src="./assets/userIcon.png" alt="User logo, Login"> Login</li>
+
+                <!-- opcion usuario logueado -->
                 <li class="iconOption userButton" style="display:none;">
                     <p class="user-name-welcome"></p>
                     <div class="userprofile">
@@ -47,15 +54,16 @@
                             <li class="logoutBtn" data-userid="">Log out</li>
                         </ul>
                       </div>
-
                 </li>
-            </nav>
-        </ul>
-
+            </ul>
+        </nav>
+        
+        <!-- CARRITO -->
         <div class="cart">
             
             <i class="fa-solid fa-xmark close-cart"></i>
-            
+
+            <!-- contenedor carrito -->
             <div class="cart-container">
                 <h2>Shopping Cart</h2>
                 <!-- card producto -->
@@ -70,41 +78,48 @@
             </div>
         </div>
     </header>
-    <main>
+<!-- FIN HEADER -->
 
-    <!-- HERO SECTION -->
+<!-- MAIN -->
+    <main>
+<!-- HERO SECTION -->
         <section class="hero-section" id="hero-section">
             <!-- CARROUSEL -->
             <article class="carrouselinfo-container" id="carousel">
+                <!-- boton previous -->
                 <div class="button-slider-container" id="previousVideo">
                     <img src="./assets/bannerHeroAssets/back-arrow.png" alt="">
                 </div>
 
                     <!-- FICHA-GAME -->
                     <div class="game-info" id="game-info">
-                        
+                        <!-- descripcion del juego banner -->
                         <div class="logoAndDescription">
                             <img src="" id="gameLogo" alt="">
                             <p id="game-banner-description"></p>
-                            <button class="add-btn" style="display: none">add to cart</button>
+                            <button class="add-btn btn-banner">add to cart</button>
                         </div>
+
                         <div class="genresAndVolume">
                             <i class="fa-solid fa-volume-xmark volume"></i>
                             <div id="genres"></div>
                         </div>
                         
                     </div>
+                <!-- boton next  -->
                 <div class="button-slider-container" id="nextVideo">
                     <img src="./assets/bannerHeroAssets/next-arrow.png" alt="">
                 </div>
+
             </article>
             <!-- VIDEO DINAMICO CARRUSEL -->
             <video class="video" autoplay id="videoPlayer">
                 <source src="" type="video/mp4" id="video"/>
             </video>
         </section>
+<!-- FIN HERO SECTION -->
 
-    <!-- HOW TO BUY SECTION -->
+<!-- HOW TO BUY SECTION -->
         <section class="htb-section" id="htb-section">
             <h2>HOW TO BUY</h2>
             <article class="steps-container">
@@ -136,9 +151,10 @@
             </article>
         </section>
 
-        <!-- STORE SECTION -->
+<!-- STORE SECTION -->
         <section class="store-section" id="store-section">
             <h1>STORE</h1>
+            <!-- filtros -->
             <article class="filter-container">
                 <p class="filter active" data-filter="allgames">All games</p>
                 <!-- <p class="filter" data-filter="top2022">Top 2022</p> -->
@@ -150,27 +166,11 @@
                 <p class="filter" data-filter="simulation">Simulation</p>
                 <p class="filter" data-filter="sports">Sports</p>
             </article>
+            <!-- contenedor de juegos renderizados -->
             <article class="cardsGame-container">
-                <!-- <div class="cardGame">
-                    <div class="cardGameInfo onHover">
-                        <h4>Grand Theft Auto</h4>
-                        <div class="genres">
-                            <p>Action</p>
-                            <p>Adventure</p>
-                        </div>
-                        <div class="rating-price">
-                            <p><img src="./assets/starIcon.png" alt=""><b>Rating:</b>4.8</p>
-                            <p><img src="./assets/priceIcon.png" alt=""><b>Price</b>10</p>
-                        </div>
-                        <div class="recommendedSystem">
-                            <p>Recommended: OS: Windows 10 64 Bit, Windows 8.1 64 Bit, Windows 8 64 Bit, Windows 7 64 Bit Service Pack 1Processor: Intel Core i5 3470 @ 3.2GHz (4 CPUs) / AMD X8 FX-8350 @ 4GHz (8 CPUs)Memory: 8 GB RAMGraphics: NVIDIA GTX 660 2GB 
-                                / AMD HD 7870 2GBStorage: 72 GB available spaceSound Card: 100% DirectX 10 compatible</p>
-                        </div>
-                        <button class="add-btn">Add to cart</button>
-                    </div>
-                </div>
-            -->
+                <!-- juegos renderizados -->
             </article>
+            <!-- paginación de juegos -->
             <div class="locationPageStore">Showing page <small class="locationPageStoreNumber">1</small> of 6</div>
             <div class="pageControl">
                 <button class="pageprevBtn"><i class="fa-solid fa-chevron-left"></i></button>
@@ -178,9 +178,12 @@
                 <button class="pagenextBtn"><i class="fa-solid fa-angle-right"></i></button>
             </div>
         </section>
+<!-- FIN STORE -->
     </main>
+<!-- FIN MAIN -->
+    <!-- modal agregar juegos -->
     <div class="add-modal"></div>
-
+<!-- FOOTER -->
     <footer class="footer-section">
         
         <ul class="redes-footer">
@@ -191,12 +194,12 @@
         </ul>
         <p>Designed and developed by Natalia Vega</p>
     </footer>
+<!-- FIN FOOTER -->
+
+<!-- ARCHIVOS JAVASCRIPT -->
     <script src="./index/dataBanner.js"></script>
     <script src="./index/index.js"></script>
     <script src="./index/manageProduct.js"></script>
     <script src="./index/cart.js"></script>
-    
-    <!-- <script src="dataUser.js"></script> -->
-
 </body>
 </html> 

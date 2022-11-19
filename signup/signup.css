@@ -56,7 +56,7 @@ main {
   background: rgba(18, 18, 18, 0.25);
   backdrop-filter: blur(2.5px);
   border-radius: 0px 32px 32px 0px;
-  gap: 70px;
+  gap: 42px;
   padding: 24px;
 }
 .login-data-container img {
@@ -263,7 +263,7 @@ select:focus {
   font-family:'Roboto', sans-serif;
   font-size: 14px;
   font-weight: 500;
-  height: 16px;
+  height: 32px;
 }
 
 form div {
@@ -299,6 +299,9 @@ form div {
   }
 }
 @media (max-width: 570px) {
+  main {
+    height: 100%;
+  }
   form div {
     width: 100%;
     flex: 0 0 64px;
@@ -318,5 +321,8 @@ form div {
   }
   .login-data-container {
     gap: 24px;
+  }
+  .showMessage {
+    height: 52px;
   }
 }

@@ -18,6 +18,9 @@ const backtostore = document.querySelector(".backtostore");
 
 //boton de redireccionamiento a login
 const goLoginbtn = document.querySelector(".goLoginbtn");
+
+// LOGICA BACKGROUND DINAMICO
+
 //Funcion para obtener un numero random de un array de objetos, incluidos el
 //minimo y maximo, ademas de redondear por las dudas el numero que llega
 function getRandomGame(min, max) {
@@ -26,12 +29,14 @@ function getRandomGame(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
+//Funcion de estilado de background
 function styleBackground(game, image) {
   //Colocar background image al body
   document.body.style.backgroundImage = `url(${image})`;
   nameBackgroundGame.innerHTML = `<h3>Find "${game.name}" in our store</h3>`;
 }
 
+//Funcion para verificar existencia del bg
 function isValidBG(game, image) {
   //que vuelva
   if (image === null) {
@@ -52,8 +57,7 @@ const traerBackgrounds = async () => {
     //Filtro de mejores 40 juegos del 2022 games?dates=2022-01-01,2022-12-31&ordering=-added&ordering=-metacritic&page_size=40
     //Filtro de mejores juegos en general games/lists/greatest?discover=true&ordering=-added&page_size=40&page=1
     const data = await response.json();
-    // console.log(data)
-    console.log(data.results[getRandomGame(0, 40)]);
+
 
     const randomPopularGame2022 = data.results[getRandomGame(0, 40)];
     const getBackgroundImage = randomPopularGame2022.background_image;
@@ -64,51 +68,8 @@ const traerBackgrounds = async () => {
   }
 };
 
-// //cada 30s cambia el fondo ACTIVVAR
-setInterval(traerBackgrounds, 20000);
-
-//redirrecion al store back
-
-const submitForm = (e) => {
-  e.preventDefault();
-  getOlderThan();
-  const isValidForm = () => {
-    // funcion para validar el formulario
-    const isValidName = checkTextInput(nameInput); // validamos el nombre
-    const isValidEmail = checkEmail(emailInput); // validamos el email
-    const isValidCountry = checkCountry(countryInput, countryOption); // validamos el apellido
-    const isValidDate = checkDate(birthdayInput); // validamos la fecha
-    const isValidPassword = checkPassword(passwordInput); // validamos el telefono
-    const isValidRepPass = checkPassword(passwordField);
-    return (
-      isValidName &&
-      isValidDate &&
-      isValidEmail &&
-      isValidCountry &&
-      isValidRepPass &&
-      isValidPassword
-    );
-  };
-  console.log(isValidForm());
-  if (isValidForm()) {
-    saveData(); // guardamos los datos
-    form.reset(); // reseteamos el formulario
-    saveLocalStorage(); // guardamos en el localstorage
-    form.submit();
-    if (window.confirm("Your account has been created succesfully. If you want to enter your account click on 'accept' and log in with your user data")) {
-      window.location.href = "../login/login.html";
-      
-    }
-
-  }
-};
-
-// console.log(user.name)
-
-// const fillUserLogin = () => {
-//     if(user[-1].name)
-// }
-
+//cada 1 minuto cambia el fondo
+setInterval(traerBackgrounds, 60000);
 
 const init = () => {
   traerBackgrounds();

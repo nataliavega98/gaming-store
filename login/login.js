@@ -16,6 +16,9 @@ const backtostore = document.querySelector(".backtostore");
 
 //boton de redireccionamiento
 const gotocreatebtn = document.querySelector(".gotocreatebtn");
+
+// LOGICA BACKGROUND DINAMICO
+
 //Funcion para obtener un numero random de un array de objetos, incluidos el
 //minimo y maximo, ademas de redondear por las dudas el numero que llega
 function getRandomGame(min, max) {
@@ -24,22 +27,25 @@ function getRandomGame(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
+//Funcion de estilado de background
 function styleBackground(game, image) {
   //Colocar background image al body
   document.body.style.backgroundImage = `url(${image})`;
   nameBackgroundGame.innerHTML = `<h3>Find "${game.name}" in our store</h3>`;
 }
 
+//Funcion para verificar existencia del bg
 function isValidBG(game, image) {
   //que vuelva
   if (image === null) {
+    //en caso de que no exista imagen
     document.body.style.backgroundColor = "#121212";
   } else {
     styleBackground(game, image);
   }
 }
 
-//traer background de la API
+//Traer background de la API
 const traerBackgrounds = async () => {
   try {
     const response = await fetch(
@@ -47,35 +53,29 @@ const traerBackgrounds = async () => {
         "games/lists/greatest?discover=true&ordering=-added&page_size=40&page=1" +
         apiKey
     );
-    //Filtro de mejores 40 juegos del 2022 games?dates=2022-01-01,2022-12-31&ordering=-added&ordering=-metacritic&page_size=40
-    //Filtro de mejores juegos en general games/lists/greatest?discover=true&ordering=-added&page_size=40&page=1
     const data = await response.json();
-    // console.log(data)
-    console.log(data.results[getRandomGame(0, 40)]);
 
+    //Randomizo el juego, consigo su background, lo estilo
     const randomPopularGame2022 = data.results[getRandomGame(0, 40)];
     const getBackgroundImage = randomPopularGame2022.background_image;
-
     styleBackground(randomPopularGame2022, getBackgroundImage);
   } catch (err) {
     console.log(err);
   }
 };
 
-//cada 30s cambia el fondo ACTIVAR
-setInterval(traerBackgrounds, 20000);
-
-//redirrecion al store back
-
-
+//cada 1 minuto cambia el fondo
+setInterval(traerBackgrounds, 60000);
 
 const initBG = () => {
   traerBackgrounds();
+  //redirrecion al store back
   backtostore.addEventListener("click", () => {
     setTimeout(() => {
       document.location.href = "../index.html";
     }, 2000);
   });
+  //redirrecion al sign up
   gotocreatebtn.addEventListener("click", () => {
     setTimeout(() => {
       document.location.href = "../signup/signup.html";

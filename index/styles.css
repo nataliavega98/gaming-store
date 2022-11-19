@@ -546,7 +546,6 @@ video {
   line-height: 16px;
 
   transition: height 1s ease-in-out;
-
 }
 .genres {
   display: flex;
@@ -578,8 +577,6 @@ video {
   display: none;
   flex-direction: column;
   width: 100%;
-  
-
 }
 .cardGameInfo button {
   width: 100%;
@@ -591,15 +588,14 @@ video {
   align-content: center;
   align-items: center;
   width: 100%;
-  height: 100px;
+  height: 125px;
   transition: height 1s ease-in-out;
   overflow: hidden;
 }
 /*Carta con hover*/
 
-.cardGameInfo:hover > .background-blur div.recommendedSystem{
+.cardGameInfo:hover > .background-blur div.recommendedSystem {
   display: flex;
-  
 }
 .background-blur:hover {
   height: 280px;
@@ -691,6 +687,7 @@ video {
   transition: all 1s ease-out;
   text-align: center;
   transform: translateY(200%);
+  z-index: 1111;
 }
 .active-modal {
   transform: translateY(0);
@@ -937,4 +934,106 @@ footer {
 }
 .locationPageStore small {
   font-size: 16px;
+}
+
+/* //LOADING */
+
+.cardGameLoading {
+  border-radius: 24px;
+  background-size: cover;
+  flex: 0 0 330px;
+  height: 390px;
+  display: flex;
+  align-items: flex-end;
+  background-color: #4d4d4d38;
+}
+.cardGameInfoLoading {
+  background: rgb(183 183 183 / 9%);
+  backdrop-filter: blur(7.5px);
+  border-radius: 65px 65px 16px 16px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 16px 24px;
+  gap: 8px;
+  font-family: "Roboto";
+}
+.cardGameInfoLoading i {
+  color: gray;
+}
+.background-blurLoading {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-content: center;
+  align-items: center;
+  width: 100%;
+  height: 125px;
+}
+.background-blurLoading h4 {
+  border-radius: 4px;
+  width: 100%;
+  height: 25px;
+}
+.rating-priceLoading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.rating-priceLoading p {
+  border-radius: 4px;
+  width: 40%;
+  height: 25px;
+}
+.add-btnLoading {
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  height: 40px;
+  padding: 8px 16px;
+  text-align: center;
+  width: 100%;
+}
+.genresLoading {
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+  width: 100%;
+}
+.genresLoading p {
+  height: 25px;
+  width: 30%;
+  border-radius: 50px;
+  padding: 0px 8px;
+}
+.shinny {
+  background: rgb(149 149 149 / 43%);
+  backdrop-filter: blur(5.5px);
+  
+  position: relative;
+  overflow: hidden;
+}
+
+.shinny::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  height: 100%;
+  transform: skew(5deg);
+  animation: shine infinite 1.5s ease-in-out;
+}
+@keyframes shine {
+  from {
+    transform: skew(45deg) translateX(0%);
+  }
+
+  to {
+    transform: skew(45deg) translateX(200%);
+  }
 }

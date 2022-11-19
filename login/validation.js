@@ -12,6 +12,8 @@ const showPassword = document.querySelector("#show-password");
 //contenedor de password
 const passContainer = document.querySelector(".passwordContainer");
 
+// LOGICA USUARIO EXISTE EN LA BASE DE DATOS
+
 //¿El usuario existe? ¿Coincide contraseña con su usuario(email)?
 const checkUserExist = (inputvalue) => {
   let valid = false;
@@ -21,18 +23,18 @@ const checkUserExist = (inputvalue) => {
   if (!input.length) {
     showError("Please enter your email adress.");
   } else if (isUserExisting(input) == undefined) {
+    //si no existe o no coincide ese mail
     showError("Please, enter with your email adress or create an account.");
   } else if (!isUserExisting(input)) {
     //Si devuelve false porque no hay algo q coincida, lo paso a true para mostrar el error
-    console.log(!isUserExisting(input));
     showError("Incorrect email adress or password");
   } else {
     valid = true;
   }
-  console.log(valid);
   return valid;
 };
 
+// Funcion para mostrar error
 const showError = (message) => {
   const error = document.querySelector(".showmessage");
   error.textContent = message;
@@ -40,15 +42,13 @@ const showError = (message) => {
 
 // toggle contraseña y repeat contraseña
 showPassword.addEventListener("click", () => {
-  // console.log("funciono");
-  // console.log(showPassword1.classList);
   showPassword.classList.toggle("fa-eye");
   const type =
     currentPassword.getAttribute("type") === "password" ? "text" : "password";
   currentPassword.setAttribute("type", type);
 });
 
-//Veo si en mi array de objetos coincide el usuario con alguno ya cargado
+//Funcion para verificar en el array de objetos si hay algun usuario que coincida con alguno ya cargado
 const isUserExisting = (emailuser) => {
   //Me trago el usuario que ingresó
   let valid = false;
@@ -60,7 +60,6 @@ const isUserExisting = (emailuser) => {
     existingUserList.email == userLoginInput.value.trim() &&
     existingUserList.password == currentPassword.value.trim()
   ) {
-    // console.log("Contraseñas coinciden");
     //Si ambos son correctos y coinciden que cambie la condicion de logued a true
     isLogedTrue(existingUserList);
     valid = true;
@@ -68,6 +67,7 @@ const isUserExisting = (emailuser) => {
   return valid;
 };
 
+//Funcion que loguea (true) al usuario una vez verificado sus datos e ingreso
 const isLogedTrue = (userFinded) => {
   let valid = false;
   //El usuario logueado con contraseña y email q coinciden le activo su logueo a true
@@ -76,6 +76,7 @@ const isLogedTrue = (userFinded) => {
       ? { ...userItem, isLoged: true }
       : userItem;
   });
+  //lo guardo
   localStorage.setItem("user", JSON.stringify(user));
   // Si se logró loguear, que redireccione al store
   if ((userFinded.isloged = true)) {
@@ -88,7 +89,6 @@ const submitForm = (e) => {
   e.preventDefault();
   //Si la validacion del usuario da true redireccionar
   if (checkUserExist(userLoginInput)) {
-    console.log(checkUserExist(userLoginInput));
     window.location.href = "../index.html";
   }
 };
