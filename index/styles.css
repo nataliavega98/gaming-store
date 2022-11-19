@@ -164,10 +164,15 @@ i.close-menu {
   display: none;
 }
 
-.menu-container li:last-child {
+.user-name-welcome-mobile {
   display: none;
 }
-
+.logoutButtonMobile {
+  display: none;
+}
+.loginButtonMobile {
+  display: none;
+}
 .genresAndVolume i {
   cursor: pointer;
 }
@@ -520,24 +525,20 @@ video {
   font-weight: 600;
   font-size: 20px;
   line-height: 24px;
+  text-align: center;
 }
 
 .cardGameInfo {
   background: rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(7.5px);
-
   border-radius: 65px 65px 16px 16px;
-
   width: 100%;
-  height: 200px;
-
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   padding: 16px 24px;
-  gap: 12px;
-
+  gap: 8px;
   font-family: "Roboto";
   font-style: normal;
   font-weight: 400;
@@ -545,8 +546,8 @@ video {
   line-height: 16px;
 
   transition: height 1s ease-in-out;
-}
 
+}
 .genres {
   display: flex;
   gap: 8px;
@@ -575,27 +576,42 @@ video {
 }
 .recommendedSystem {
   display: none;
+  flex-direction: column;
   width: 100%;
-  height: 150px;
+  
+
 }
 .cardGameInfo button {
   width: 100%;
 }
-
-/*Carta con hover*/
-.cardGameInfo:hover > .recommendedSystem {
+.background-blur {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 16px;
+  align-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100px;
+  transition: height 1s ease-in-out;
+  overflow: hidden;
 }
+/*Carta con hover*/
 
-.cardGameInfo:hover {
+.cardGameInfo:hover > .background-blur div.recommendedSystem{
+  display: flex;
+  
+}
+.background-blur:hover {
+  height: 280px;
+  transition: height 1s ease-in-out;
+}
+/* .cardGameInfo:hover {
   height: 90%;
   transition: all 1s ease-in-out;
   overflow: hidden;
   background: rgba(0, 0, 0, 0.30);
 
-}
+} */
 
 /* CART  */
 .cart {
@@ -780,7 +796,6 @@ video {
   background-color: #9d8ca68f;
   color: #ffffffcf;
   border: none;
-
 }
 
 /* open cart  */
@@ -826,7 +841,7 @@ footer {
   right: 0;
   top: 100px;
   height: auto;
-  width: 70px;
+  width: 100%;
   z-index: 10000;
   background-color: #121212be;
   backdrop-filter: blur(3px);
@@ -836,6 +851,7 @@ footer {
   font-family: roboto;
   font-weight: 400;
   font-size: 14px;
+  text-align: center;
 }
 
 .userButton {
@@ -865,7 +881,6 @@ footer {
   gap: 2px;
   /* align-items: center; */
   width: 100%;
-
 }
 
 .userratings {
@@ -880,7 +895,7 @@ footer {
   flex-direction: column;
   gap: 4px;
 }
-.dataGame p{
+.dataGame p {
   display: flex;
   gap: 4px;
 }
@@ -888,23 +903,22 @@ footer {
 .pageControl {
   display: flex;
   justify-content: center;
-  gap:8px;
+  gap: 8px;
   align-items: center;
   color: white;
   font-size: 20px;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .pageControl button {
   height: 42px;
-  width:42px;
+  width: 42px;
   background: none;
   border: none;
   cursor: pointer;
 }
 
 .pageControl button i {
-  
   font-size: 24px;
   color: white;
 }

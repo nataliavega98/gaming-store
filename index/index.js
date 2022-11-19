@@ -30,14 +30,20 @@ const volumeBtn = document.querySelector(".volume");
 //video
 const videoBanner = document.querySelector("video");
 
-//boton login
+//boton login desktop
 const loginButton = document.querySelector(".loginButton");
+
+//boton logout mobile
+const loginButtonMobile = document.querySelector(".loginButtonMobile");
+//boton login mobile
+const logoutButtonMobile = document.querySelector(".logoutButtonMobile");
 
 //second menu list
 const secondMl = document.querySelector(".second-ml");
 const userButton = document.querySelector(".userButton");
 const userProfile = document.querySelector(".userprofile");
 const userNW = document.querySelector(".user-name-welcome");
+const userNWMobile = document.querySelector(".user-name-welcome-mobile");
 const logoutBtn = document.querySelector(".logoutBtn");
 // NAV BAR FIXED CHANGE COLOR ON SCROLL
 // Medidas de hero y de todo el documento
@@ -122,23 +128,67 @@ const closeOnOverlayClick = () => {
 //   userButton.style.display = "flex";
 //   userNW.innerHTML = `${name}`;
 // };
+
 const isSomeoneLoged = () => {
   //Me trago el usuario que tiene loged true
   const userloged = user.find((loged) => loged.isLoged == true);
   //Si no encuentra true que que devuelva !userloged para que n tire undefined (devuelve true),
   //Cuando si encuentre true userloged devolverá false y pasará al else if
-  console.log(!userloged)
+  console.log(userloged);
   if (!userloged) {
     return;
   } else if (userloged.isLoged == true) {
-    loginButton.style.display = "none";
-    userButton.style.display = "flex";
-    userNW.innerHTML = userloged.name;
-
+    userNW.innerHTML = `👋Welcome ${userloged.name}!`;
+    userNWMobile.innerHTML = `👋Welcome ${userloged.name}!`;
     //Le asigno el id al boton logout para luego poder sacarlo y poner en false el isLoged
     logoutBtn.setAttribute("data-userid", `${userloged.id}`);
+    logoutButtonMobile.setAttribute("data-userid", `${userloged.id}`);
+
+    styleUserIfMediaQuery();
   }
 };
+const styleUserLoged = () => {
+  if (window.innerWidth < 730) {
+    userButton.style.display = "none";
+    loginButtonMobile.style.display = "none";
+    userNWMobile.style.display = "flex";
+    logoutButtonMobile.style.display="block"
+  } else {
+    loginButton.style.display = "none";
+    userButton.style.display = "flex";
+    loginButtonMobile.style.display = "none";
+    logoutButtonMobile.style.display="none"
+
+  }
+};
+const styleUserLogout = () => {
+  console.log("EStilado logout");
+  if (window.innerWidth < 730) {
+    loginButtonMobile.style.display = "block";
+    loginButton.style.display = "none";
+    logoutButtonMobile.style.display="none"
+    userNWMobile.style.display = "none";
+
+  } else {
+    loginButton.style.display = "flex";
+    userButton.style.display = "none";
+    
+    loginButtonMobile.style.display = "none";
+    userNWMobile.style.display = "none";
+
+  }
+};
+//Funcion de estilado según el tamaño del dispositivo
+const styleUserIfMediaQuery = () => {
+  const userloged = user.find((loged) => loged.isLoged == true);
+
+  if (userloged.isLoged == true) {
+    styleUserLoged();
+  } else {
+    styleUserLogout();
+  }
+};
+// Attach listener function on state changes
 // const checkLogin = () => {
 //   const [{ name, isloged }] = user;
 //   if (isloged) {
@@ -156,15 +206,14 @@ const replaceNameToLogout = (e) => {
   // const lastIndexOfArrayUser = user.length - 1;
   // const name = user[lastIndexOfArrayUser].name;
   //Paso mi string del boton dataset-userid a numero entero
+  console.log("Deslogueado");
   const userId = parseInt(e.target.dataset.userid);
   //Obtengo el userid al tocar el boton logout y así con el find cambio el estado de isloged
   user = user.map((userItem) => {
     return userItem.id == userId ? { ...userItem, isLoged: false } : userItem;
   });
-  console.log(user);
   localStorage.setItem("user", JSON.stringify(user));
-  loginButton.style.display = "flex";
-  userButton.style.display = "none";
+  styleUserLogout();
 };
 
 init = () => {
@@ -182,16 +231,26 @@ init = () => {
       document.location.href = "./login/login.html";
     }, 2000);
   });
+  loginButtonMobile.addEventListener("click", () => {
+    setTimeout(() => {
+      document.location.href = "./login/login.html";
+    }, 2000);
+  });
   // checkLogin();
   //desplegar menu cuando se inicio sesion
   userButton.addEventListener("mouseover", toggleOnHoverUser);
   userProfile.addEventListener("mouseover", toggleOnHoverUser);
   userButton.addEventListener("mouseleave", mouseLeftHoverUser);
 
-  //logout
+  // //logout
   logoutBtn.addEventListener("click", replaceNameToLogout);
+  // //logout
+  logoutButtonMobile.addEventListener("click", replaceNameToLogout);
 
   document.addEventListener("DOMContentLoaded", isSomeoneLoged);
+
+  //Verificador constante de tamaño de pantalla
+  window.addEventListener("resize", isSomeoneLoged);
 };
 
 init();

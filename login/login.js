@@ -63,7 +63,7 @@ const traerBackgrounds = async () => {
 };
 
 //cada 30s cambia el fondo ACTIVAR
-// setInterval(traerBackgrounds, 30000);
+setInterval(traerBackgrounds, 20000);
 
 //redirrecion al store back
 

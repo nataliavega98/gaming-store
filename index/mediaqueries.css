@@ -34,9 +34,10 @@
   .button-slider-container {
     height: 50%;
     width: 25vw;
-    background:none;
+    background: none;
   }
-  #nextVideo:hover, #previousVideo:hover {
+  #nextVideo:hover,
+  #previousVideo:hover {
     background: none;
   }
   .gaming-logo {
@@ -56,16 +57,6 @@
   .footer-section {
     padding: 0 60px;
   }
-  .menu-container li:last-child {
-    display: block;
-    /* background-color: white;
-    border-radius: 4px;
-    color: black;
-    font-weight: 700;
-    text-align: center;
-    /* justify-self: center; */
-    /* padding: 8px; */ */
-}
   .game-info {
     gap: 24px;
     padding: 0px;
@@ -92,7 +83,11 @@
   }
 
   /* menu hamburguesa  */
-
+  .option a:hover,
+  .option:hover {
+    text-decoration: none;
+    text-underline-offset: none;
+  }
   i.menu {
     display: flex;
     align-items: center;
@@ -104,6 +99,30 @@
   .loginButton {
     display: none;
   }
+
+  li.loginButtonMobile {
+    display: block;
+    background-color: white;
+    border-radius: 4px;
+    color: black;
+    font-weight: 700;
+    text-align: center;
+    /* justify-self: center; */
+    padding: 8px;
+    width: 100%;
+  }
+
+  .logoutButtonMobile {
+
+    width: 100%;
+    border: 1px solid #ff5170;
+    border-radius: 4px;
+    padding: 8px;
+    font-weight: 700;
+    text-align: center;
+    color: #ff5170;
+  }
+
   .cartButton {
     font-size: 24px;
   }
@@ -157,12 +176,8 @@
 
     align-self: end;
   }
-  .option a:hover,
-  .option:hover {
-    text-decoration: none;
-    text-underline-offset: none;
-  }
-  .menu-container li {
+
+  .option {
     border-bottom: solid 1px var(--whiteInactive);
     padding-bottom: 16px;
 
@@ -187,7 +202,9 @@
   .logoAndDescription button {
     width: 100%;
   }
-
+  .loginButton {
+    display: none;
+  }
   /* //carrito */
   .product-quantity-container {
     display: flex;
@@ -195,29 +212,29 @@
     gap: 16px;
     align-items: center;
     justify-content: center;
-}
-.products-container {
-  display: flex;
-  gap: 20px;
-  padding: 20px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
-  height: 190px;
-  justify-content: space-between;
-  flex-direction: column;
-  align-items: center;
-  height: auto;
-}
-.products-container img {
-  border-radius: 7px;
-  height: 100px;
-  width: 90px;
-  object-fit: cover;
-}
-.product-info-container {
-  flex-direction: column;
-  height: 190px;
-  align-items: center;
-}
+  }
+  .products-container {
+    display: flex;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+    height: 190px;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+  }
+  .products-container img {
+    border-radius: 7px;
+    height: 100px;
+    width: 90px;
+    object-fit: cover;
+  }
+  .product-info-container {
+    flex-direction: column;
+    height: 190px;
+    align-items: center;
+  }
 }
 
 @media (max-width: 500px) {
@@ -261,7 +278,7 @@
   .button-slider-container {
     height: 50%;
     width: 25vw;
-    background:none;
+    background: none;
   }
   .logoAndDescription button {
     width: 200px;
@@ -271,14 +288,11 @@
   }
 }
 @media (max-width: 400px) {
-   
-    .game-info {
-
-        padding: 0;
-        width: 100%;
-
-    }
-    .logoAndDescription button {
-        width: 100%;
-      }
+  .game-info {
+    padding: 0;
+    width: 100%;
+  }
+  .logoAndDescription button {
+    width: 100%;
+  }
 }

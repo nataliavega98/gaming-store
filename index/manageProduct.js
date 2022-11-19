@@ -85,51 +85,54 @@ const renderProductStore = (game) => {
   // );
   //   console.log(genres);
   //   console.log(genresRender(genres));
-  return `<div class="cardGame" id="${id}" style="background-image: url('${background_image}');">
+  return `
+                <div class="cardGame" id="${id}" style="background-image: url('${background_image}');">
                 <div class="cardGameInfo onHover">
-                    <h4>${name}</h4>
-                    <div class="genres">
-                        ${genresRender(genres)}
-                    </div>
-                    <div class="rating-price">
-                        <p><img src="./assets/starIcon.png" alt=""><b>Rating:</b>${rating}</p>
-                        <p><img src="./assets/priceIcon.png" alt=""><b>Price</b>${
-                          metacritic || 50
-                        }€</p>
-                    </div>
-                    <div class="recommendedSystem">
-                        <div class="dataGame">
-                            <p><i class="fa-regular fa-clock"></i>Playtime: ${playtime}</p>
-                            <p><i class="fa-regular fa-calendar"></i>Released: ${released}</p>
+                    <i class="fa-solid fa-chevron-up"></i>
+                    <div class="background-blur">
+                        <h4>${name}</h4>
+                        <div class="genres">
+                            ${genresRender(genres)}
                         </div>
-                        <div class="tags">
-                            <i class="fa-solid fa-hashtag"></i><p>Tags:</p>
-                                ${genresRender(tags)}
+                        <div class="rating-price">
+                            <p><img src="./assets/starIcon.png" alt=""><b>Rating:</b>${rating}</p>
+                            <p><img src="./assets/priceIcon.png" alt=""><b>Price</b>${
+                            metacritic || 50
+                            }€</p>
+                        </div>
+                        <div class="recommendedSystem">
+                            <div class="dataGame">
+                                <p><i class="fa-regular fa-clock"></i>Playtime: ${playtime}</p>
+                                <p><i class="fa-regular fa-calendar"></i>Released: ${released}</p>
+                            </div>
+                            <div class="tags">
+                                <i class="fa-solid fa-hashtag"></i><p>Tags:</p>
+                                    ${genresRender(tags)}
 
-                        </div>
-                        <div class="userratings">
-                            <p>User Ratings</p>
-                            <div class="allrates">
-                                <p><i class="fa-solid fa-face-grin-stars"></i> ${
-                                  ratings[0].title
-                                }: ${ratings[0].percent}%</p>
-                                <p><i class="fa-solid fa-face-smile"></i> ${
-                                  ratings[1].title
-                                }: ${ratings[1].percent}%</p>
-                                <p><i class="fa-solid fa-face-meh"></i> ${
-                                  ratings[2].title
-                                }: ${ratings[2].percent}%</p>
-                                <p><i class="fa-solid fa-face-frown"></i> ${
-                                  ratings[3].title
-                                }: ${ratings[3].percent}%</p>
+                            </div>
+                            <div class="userratings">
+                                <p>User Ratings</p>
+                                <div class="allrates">
+                                    <p><i class="fa-solid fa-face-grin-stars"></i> ${
+                                    ratings[0].title
+                                    }: ${ratings[0].percent}%</p>
+                                    <p><i class="fa-solid fa-face-smile"></i> ${
+                                    ratings[1].title
+                                    }: ${ratings[1].percent}%</p>
+                                    <p><i class="fa-solid fa-face-meh"></i> ${
+                                    ratings[2].title
+                                    }: ${ratings[2].percent}%</p>
+                                    <p><i class="fa-solid fa-face-frown"></i> ${
+                                    ratings[3].title
+                                    }: ${ratings[3].percent}%</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <button class="add-btn" data-id="${id}" data-name="${name}" data-price="${
-    metacritic || 50
-  }" data-bg="${background_image}" data-quantity="${quantity}">Add to cart</button>
+                    <button class="add-btn" data-id="${id}" data-name="${name}" data-price="${metacritic || 50}" data-bg="${background_image}" data-quantity="${quantity}">Add to cart</button>
                 </div>
-                </div>`;
+              </div>
+  `;
 };
 const renderProductRequested = (productsList) => {
   // console.log(productsList)

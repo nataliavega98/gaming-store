@@ -12,7 +12,9 @@ font-family: 'Roboto', sans-serif; */
   list-style: none;
   user-select: none;
 }
-
+html{
+  background-color: #121212;
+}
 :root {
   --background: #121212;
   --button-cart-active: #b535f6;
