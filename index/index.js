@@ -207,7 +207,14 @@ const replaceNameToLogout = (e) => {
   localStorage.setItem("user", JSON.stringify(user));
   styleUserLogout();
 };
-
+const optionMenuMobile = (e) => {
+  console.log(e.target.classList)
+  if(e.target.classList.contains("close")){
+    toggleMenu()
+  } else {
+    return
+  }
+}
 init = () => {
   cartBtn.addEventListener("click", toggleCart);
   cartBtnClose.addEventListener("click", toggleCart);
@@ -215,7 +222,6 @@ init = () => {
   window.addEventListener("scroll", closeOnScroll);
   volumeBtn.addEventListener("click", unmuteVideo);
   menuBtnOpen.addEventListener("click", toggleMenu);
-  menuBtnClose.addEventListener("click", toggleMenu);
 
   //ir al login
   loginButton.addEventListener("click", () => {
@@ -228,11 +234,7 @@ init = () => {
       document.location.href = "./login/login.html";
     }, 2000);
   });
-  const optionMenuMobile = (e) => {
-    if(e.target.classList.contains("option") || e.target.pathname.length){
-      toggleMenu()
-    }
-  }
+  
   //desplegar menu cuando se inicio sesion
   userButton.addEventListener("mouseover", toggleOnHoverUser);
   userProfile.addEventListener("mouseover", toggleOnHoverUser);
