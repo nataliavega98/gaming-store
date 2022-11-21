@@ -545,7 +545,11 @@ video {
   font-size: 14px;
   line-height: 16px;
 
-  transition: height 1s ease-in-out;
+  transition: background 1s ease-in-out;
+}
+.cardGameInfo:hover {
+  background: #12121278;
+  transition: background 2s ease;
 }
 .genres {
   display: flex;

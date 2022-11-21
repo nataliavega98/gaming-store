@@ -228,7 +228,7 @@ form input:focus::placeholder {
   background: none;
   border: none;
   padding: 0;
-  color: #b535f6;
+  color: #ffffff;
   font-weight: 600;
   cursor: pointer;
   border-bottom: 1px solid #b635f600;

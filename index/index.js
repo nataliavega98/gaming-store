@@ -228,12 +228,16 @@ init = () => {
       document.location.href = "./login/login.html";
     }, 2000);
   });
-
+  const optionMenuMobile = (e) => {
+    if(e.target.classList.contains("option") || e.target.pathname.length){
+      toggleMenu()
+    }
+  }
   //desplegar menu cuando se inicio sesion
   userButton.addEventListener("mouseover", toggleOnHoverUser);
   userProfile.addEventListener("mouseover", toggleOnHoverUser);
   userButton.addEventListener("mouseleave", mouseLeftHoverUser);
-
+  menuContainer.addEventListener("click", optionMenuMobile)
   //logout
   logoutBtn.addEventListener("click", replaceNameToLogout);
   logoutButtonMobile.addEventListener("click", replaceNameToLogout);

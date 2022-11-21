@@ -286,8 +286,6 @@
   .hero-section::before {
     width: 100%;
   }
-}
-@media (max-width: 400px) {
   .game-info {
     padding: 0;
     width: 100%;
@@ -295,4 +293,10 @@
   .logoAndDescription button {
     width: 100%;
   }
+  .logoAndDescription img {
+    width: 100%;
+  }
+}
+@media (max-width: 400px) {
+  
 }
