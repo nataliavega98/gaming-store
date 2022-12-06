@@ -167,11 +167,11 @@ const checkPassword = (passInput) => {
   const password = passInput.value.trim();
 
   if (!password.length) {
-    showError(passInput, "La contraseña es obligatoria");
+    showError(passInput, "Password is required");
   } else if (!isPassValid(password)) {
     showError(
       passInput,
-      "La contraseña debe tener al menos 8 caracteres, una mayuscula, una minuscula y un caracter especial"
+      "The password must have at least 8 characters, one uppercase, one lowercase and one special character"
     );
   } else {
     valid = true;

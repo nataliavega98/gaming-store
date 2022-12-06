@@ -175,7 +175,7 @@ const handleMinusBtnEvent = (id) => {
 
   // Si se toco en un item con uno solo de cantidad preguntar y eliminar
   if (existingCartProduct.quantity === 1) {
-    if (window.confirm(`Do you want to delete ${existingCartProduct.name}from your cart?😥`)) {
+    if (window.confirm(`Do you want to delete ${existingCartProduct.name} from your cart?😥`)) {
       removeProductFromCart(existingCartProduct);
     }
     return;

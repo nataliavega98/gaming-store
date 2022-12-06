@@ -115,6 +115,12 @@ header {
   text-underline-offset: 5px;
   color: var(--white);
 }
+li.close{
+  display: flex;
+}
+a.close{
+  width: 100%;
+}
 .gaming-logo {
   padding: 16px 0;
 

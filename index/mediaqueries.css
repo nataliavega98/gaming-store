@@ -296,6 +296,10 @@
   .logoAndDescription img {
     width: 100%;
   }
+  .cardGameLoading{
+    flex: 0 0 260px;
+
+  }
 }
 @media (max-width: 400px) {
   
